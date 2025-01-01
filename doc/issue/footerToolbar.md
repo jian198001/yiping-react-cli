@@ -1,0 +1,1 @@
+多tab的布局下，FooterToolbar不会随着页面更新，会一直存在
