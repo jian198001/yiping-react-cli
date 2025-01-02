@@ -85,7 +85,7 @@ describe('Login Page', () => {
     // 等待接口返回结果
     await waitTime(5000);
 
-    await rootContainer.findAllByText('开源管理系统');
+    await rootContainer.findAllByText('一平管理系统');
 
     expect(rootContainer.asFragment()).toMatchSnapshot();
 

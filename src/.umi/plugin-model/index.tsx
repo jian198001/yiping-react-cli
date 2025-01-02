@@ -3,7 +3,7 @@
 // DO NOT CHANGE IT MANUALLY!
 // @ts-ignore
 import type { models as rawModels } from '@@/plugin-model/model';
-import isEqual from '/Users/macmini/Desktop/workSpace/y/yiping-react-cli/node_modules/fast-deep-equal/index.js';
+import isEqual from 'E:/workSpace/gitee/yiping-react-cli/node_modules/fast-deep-equal/index.js';
 import React, { useContext, useEffect, useMemo, useRef, useState } from 'react';
 
 type Models = typeof rawModels;

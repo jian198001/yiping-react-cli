@@ -52,9 +52,9 @@ export async function getRoutes() {
 '42': React.lazy(() => import('./EmptyRoute')),
 '43': React.lazy(() => import(/* webpackChunkName: "p__account__center__index" */'@/pages/account/center/index.tsx')),
 '44': React.lazy(() => import(/* webpackChunkName: "p__account__settings__index" */'@/pages/account/settings/index.tsx')),
-'max-tabs': React.lazy(() => import(/* webpackChunkName: "umi__plugin-maxtabs__Layout" */'/Users/macmini/Desktop/workSpace/y/yiping-react-cli/src/.umi/plugin-maxtabs/Layout.tsx')),
-'ant-design-pro-layout': React.lazy(() => import(/* webpackChunkName: "umi__plugin-layout__Layout" */'/Users/macmini/Desktop/workSpace/y/yiping-react-cli/src/.umi/plugin-layout/Layout.tsx')),
-'umi/plugin/openapi': React.lazy(() => import(/* webpackChunkName: "umi__plugin-openapi__openapi" */'/Users/macmini/Desktop/workSpace/y/yiping-react-cli/src/.umi/plugin-openapi/openapi.tsx')),
+'max-tabs': React.lazy(() => import(/* webpackChunkName: "umi__plugin-maxtabs__Layout" */'E:/workSpace/gitee/yiping-react-cli/src/.umi/plugin-maxtabs/Layout.tsx')),
+'ant-design-pro-layout': React.lazy(() => import(/* webpackChunkName: "umi__plugin-layout__Layout" */'E:/workSpace/gitee/yiping-react-cli/src/.umi/plugin-layout/Layout.tsx')),
+'umi/plugin/openapi': React.lazy(() => import(/* webpackChunkName: "umi__plugin-openapi__openapi" */'E:/workSpace/gitee/yiping-react-cli/src/.umi/plugin-openapi/openapi.tsx')),
 },
   };
 }

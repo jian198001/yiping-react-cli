@@ -3,7 +3,7 @@
 import {
   IntlCache,
   createIntl,
-} from '/Users/macmini/Desktop/workSpace/y/yiping-react-cli/node_modules/react-intl';
+} from 'E:/workSpace/gitee/yiping-react-cli/node_modules/react-intl';
 type OptionalIntlConfig = Omit<Parameters<typeof createIntl>[0], 'locale' | 'defaultLocale'>;
 export interface IRuntimeConfig {
     locale?: {

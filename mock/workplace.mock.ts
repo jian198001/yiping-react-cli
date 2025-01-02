@@ -145,7 +145,7 @@ const titles = [
   'Alipay',
   'Angular',
   'Ant Design',
-  '开源管理系统',
+  '一平管理系统',
   'Bootstrap',
   'React',
   'Vue',

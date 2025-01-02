@@ -5,11 +5,11 @@ import {
   createIntl,
   IntlShape,
   MessageDescriptor,
-} from '/Users/macmini/Desktop/workSpace/y/yiping-react-cli/node_modules/react-intl';
+} from 'E:/workSpace/gitee/yiping-react-cli/node_modules/react-intl';
 import { getPluginManager } from '../core/plugin';
-import EventEmitter from '/Users/macmini/Desktop/workSpace/y/yiping-react-cli/node_modules/event-emitter';
+import EventEmitter from 'E:/workSpace/gitee/yiping-react-cli/node_modules/event-emitter';
 // @ts-ignore
-import warning from '/Users/macmini/Desktop/workSpace/y/yiping-react-cli/node_modules/@umijs/plugins/node_modules/warning';
+import warning from 'E:/workSpace/gitee/yiping-react-cli/node_modules/@umijs/plugins/node_modules/warning';
 
 export {
   createIntl,
@@ -34,7 +34,7 @@ export {
   defineMessages,
   injectIntl,
   useIntl,
-} from '/Users/macmini/Desktop/workSpace/y/yiping-react-cli/node_modules/react-intl';
+} from 'E:/workSpace/gitee/yiping-react-cli/node_modules/react-intl';
 
 let g_intl: IntlShape;
 
@@ -46,21 +46,21 @@ export const event = new EventEmitter();
 export const LANG_CHANGE_EVENT = Symbol('LANG_CHANGE');
 
 import bnBD0 from 'antd/es/locale/bn_BD';
-import lang_bnBD0 from "/Users/macmini/Desktop/workSpace/y/yiping-react-cli/src/locales/bn-BD.ts";
+import lang_bnBD0 from "E:/workSpace/gitee/yiping-react-cli/src/locales/bn-BD.ts";
 import enUS0 from 'antd/es/locale/en_US';
-import lang_enUS0 from "/Users/macmini/Desktop/workSpace/y/yiping-react-cli/src/locales/en-US.ts";
+import lang_enUS0 from "E:/workSpace/gitee/yiping-react-cli/src/locales/en-US.ts";
 import faIR0 from 'antd/es/locale/fa_IR';
-import lang_faIR0 from "/Users/macmini/Desktop/workSpace/y/yiping-react-cli/src/locales/fa-IR.ts";
+import lang_faIR0 from "E:/workSpace/gitee/yiping-react-cli/src/locales/fa-IR.ts";
 import idID0 from 'antd/es/locale/id_ID';
-import lang_idID0 from "/Users/macmini/Desktop/workSpace/y/yiping-react-cli/src/locales/id-ID.ts";
+import lang_idID0 from "E:/workSpace/gitee/yiping-react-cli/src/locales/id-ID.ts";
 import jaJP0 from 'antd/es/locale/ja_JP';
-import lang_jaJP0 from "/Users/macmini/Desktop/workSpace/y/yiping-react-cli/src/locales/ja-JP.ts";
+import lang_jaJP0 from "E:/workSpace/gitee/yiping-react-cli/src/locales/ja-JP.ts";
 import ptBR0 from 'antd/es/locale/pt_BR';
-import lang_ptBR0 from "/Users/macmini/Desktop/workSpace/y/yiping-react-cli/src/locales/pt-BR.ts";
+import lang_ptBR0 from "E:/workSpace/gitee/yiping-react-cli/src/locales/pt-BR.ts";
 import zhCN0 from 'antd/es/locale/zh_CN';
-import lang_zhCN0 from "/Users/macmini/Desktop/workSpace/y/yiping-react-cli/src/locales/zh-CN.ts";
+import lang_zhCN0 from "E:/workSpace/gitee/yiping-react-cli/src/locales/zh-CN.ts";
 import zhTW0 from 'antd/es/locale/zh_TW';
-import lang_zhTW0 from "/Users/macmini/Desktop/workSpace/y/yiping-react-cli/src/locales/zh-TW.ts";
+import lang_zhTW0 from "E:/workSpace/gitee/yiping-react-cli/src/locales/zh-TW.ts";
 
 const flattenMessages=(
   nestedMessages: Record<string, any>,

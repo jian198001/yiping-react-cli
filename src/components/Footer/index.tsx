@@ -8,7 +8,7 @@ const Footer: React.FC = () => {
       style={{
         background: 'none',
       }}
-      copyright="Powered by 开源软件"
+      copyright="Powered by 一平软件"
       links={[ 
       ]}
     />

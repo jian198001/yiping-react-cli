@@ -11,7 +11,7 @@ import {
 import React, { useMemo } from 'react';
 import {
   ProLayout,
-} from "/Users/macmini/Desktop/workSpace/y/yiping-react-cli/node_modules/@ant-design/pro-components";
+} from "E:/workSpace/gitee/yiping-react-cli/node_modules/@ant-design/pro-components";
 import './Layout.css';
 import Logo from './Logo';
 import Exception from './Exception';
@@ -88,7 +88,7 @@ export default (props: any) => {
   "fixedHeader": false,
   "fixSiderbar": true,
   "colorWeak": false,
-  "title": "开源管理系统",
+  "title": "一平管理系统",
   "pwa": true,
   "logo": "https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg",
   "iconfontUrl": "",

@@ -4,15 +4,15 @@
 import React from 'react';
 import { ConfigProvider } from 'antd';
 
-import moment from '/Users/macmini/Desktop/workSpace/y/yiping-react-cli/node_modules/dayjs';
-import '/Users/macmini/Desktop/workSpace/y/yiping-react-cli/node_modules/dayjs/locale/bn-bd';
-import '/Users/macmini/Desktop/workSpace/y/yiping-react-cli/node_modules/dayjs/locale/en';
-import '/Users/macmini/Desktop/workSpace/y/yiping-react-cli/node_modules/dayjs/locale/fa';
-import '/Users/macmini/Desktop/workSpace/y/yiping-react-cli/node_modules/dayjs/locale/id';
-import '/Users/macmini/Desktop/workSpace/y/yiping-react-cli/node_modules/dayjs/locale/ja';
-import '/Users/macmini/Desktop/workSpace/y/yiping-react-cli/node_modules/dayjs/locale/pt-br';
-import '/Users/macmini/Desktop/workSpace/y/yiping-react-cli/node_modules/dayjs/locale/zh-cn';
-import '/Users/macmini/Desktop/workSpace/y/yiping-react-cli/node_modules/dayjs/locale/zh-tw';
+import moment from 'E:/workSpace/gitee/yiping-react-cli/node_modules/dayjs';
+import 'E:/workSpace/gitee/yiping-react-cli/node_modules/dayjs/locale/bn-bd';
+import 'E:/workSpace/gitee/yiping-react-cli/node_modules/dayjs/locale/en';
+import 'E:/workSpace/gitee/yiping-react-cli/node_modules/dayjs/locale/fa';
+import 'E:/workSpace/gitee/yiping-react-cli/node_modules/dayjs/locale/id';
+import 'E:/workSpace/gitee/yiping-react-cli/node_modules/dayjs/locale/ja';
+import 'E:/workSpace/gitee/yiping-react-cli/node_modules/dayjs/locale/pt-br';
+import 'E:/workSpace/gitee/yiping-react-cli/node_modules/dayjs/locale/zh-cn';
+import 'E:/workSpace/gitee/yiping-react-cli/node_modules/dayjs/locale/zh-tw';
 import { RawIntlProvider, getLocale, getDirection , setIntl, getIntl, localeInfo, event, LANG_CHANGE_EVENT } from './localeExports';
 
 

@@ -114,7 +114,7 @@ const Welcome: React.FC = () => {
               color: token.colorTextHeading,
             }}
           >
-            欢迎使用 开源管理系统
+            欢迎使用 一平管理系统
           </div>
           <p
             style={{

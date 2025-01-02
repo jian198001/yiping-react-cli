@@ -3,7 +3,7 @@
 // DO NOT CHANGE IT MANUALLY!
 import React from 'react';
 import { Avatar, version, Dropdown, Menu, Spin } from 'antd';
-import { LogoutOutlined } from '/Users/macmini/Desktop/workSpace/y/yiping-react-cli/node_modules/@ant-design/icons';
+import { LogoutOutlined } from 'E:/workSpace/gitee/yiping-react-cli/node_modules/@ant-design/icons';
 import { SelectLang } from '@@/plugin-locale';
 
 export function getRightRenderContent (opts: {
