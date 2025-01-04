@@ -1,24 +1,42 @@
+// 导入 Update 组件
 import Update from './Update';
+// 导入 page, del 函数
 import { page, del } from '@/services/userCenter/trade/tradeOrder';
+// 导入 ActionType, ProColumns 类型
 import type { ActionType, ProColumns, } from '@ant-design/pro-components';
+// 导入 PageContainer, ProTable 组件
 import { 
   PageContainer,
   ProTable,
 } from '@ant-design/pro-components';
-import {  FormattedMessage, useIntl, useRequest } from '@umijs/max';
+// 导入 FormattedMessage, useIntl, useRequest 组件
+import { FormattedMessage, useIntl, useRequest } from '@umijs/max';
+// 导入 Button, message, Modal 组件
 import { Button, message, Modal } from 'antd';
- import { SetStateAction, useCallback, useEffect, useRef, useState } from 'react';
- 
+// 导入 SetStateAction, useCallback, useEffect, useRef, useState 组件
+import { SetStateAction, useCallback, useEffect, useRef, useState } from 'react';
+
+// 导入 formItems
 import { formItems,} from './FormText';
 
+// 导入 getColumns 函数
 import { getColumns,} from '@/utils';
+// 导入 uuid 函数
 import {uuid} from '@/utils'
+
+/**
+ * 页面组件
+ * @returns {JSX.Element} - 返回页面组件
+ */
 export default () => {
 
+  // 使用 useState 创建一个 uid 状态
   const [uid, setUid] = useState('')
 
+  // 使用 useRef 创建一个 actionRef 引用
   const actionRef = useRef<ActionType>?.();
 
+  // 使用 useState 创建一个 selectedRowsState 状态
   const [selectedRowsState, setSelectedRows] = useState?.([]);  
 
   /**
@@ -27,8 +45,17 @@ export default () => {
    * */
   const intl = useIntl?.();
 
+  // 使用 message.useMessage 创建一个 messageApi 和 contextHolder
   const [messageApi, contextHolder] = message?.useMessage?.();
 
+  /**
+   * 使用 useRequest 钩子来处理请求
+   * @param {Function} del - 删除数据的函数
+   * @param {Object} config - 请求配置
+   * @param {boolean} config.manual - 是否手动触发请求
+   * @param {Function} config.onSuccess - 请求成功的回调函数
+   * @param {Function} config.onError - 请求失败的回调函数
+   */
   const { run: delRun, loading } = useRequest?.(del, {
     manual: true,
     onSuccess: () => {
@@ -42,6 +69,7 @@ export default () => {
     },
   });
 
+  // 定义 columns 数组
   const columns: ProColumns<never, "text">[] = [ ...getColumns?.(formItems), 
     
     {
