@@ -1,5 +1,9 @@
 export namespace API {
-  /** GET /api/currentUser */
+  /**
+   * GET /api/currentUser
+   * @param {string} token - 用户认证令牌
+   * @returns {Promise<GET_API_CURRENT_USER_RES>} - 返回当前用户信息
+   */
   export type GET_API_CURRENT_USER_QUERY = {
     /** example:  123 */
     token: string;
@@ -39,7 +43,13 @@ export namespace API {
     };
   };
 
-  /** GET /api/rule */
+  /**
+   * GET /api/rule
+   * @param {string} token - 用户认证令牌
+   * @param {string} current - 当前页码
+   * @param {string} pageSize - 每页显示的记录数
+   * @returns {Promise<GET_API_RULE_RES>} - 返回规则列表
+   */
   export type GET_API_RULE_QUERY = {
     /** example:  123 */
     token: string;

@@ -1,2 +1,5 @@
+# 忽略 node_modules 目录，因为它通常包含大量第三方库，不需要被版本控制
 node_modules/
+
+# 忽略 .DS_Store 文件，这是 Mac OS 系统自动生成的文件，不需要被版本控制
 .DS_Store

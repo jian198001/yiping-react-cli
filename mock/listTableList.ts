@@ -2,7 +2,12 @@ import dayjs from 'dayjs';
 import { Request, Response } from 'express';
 import { parse } from 'url';
 
-// mock tableListDataSource
+/**
+ * 生成规则列表数据
+ * @param {number} current - 当前页码
+ * @param {number} pageSize - 每页数据量
+ * @returns {API.RuleListItem[]} - 生成的规则列表数据
+ */
 const genList = (current: number, pageSize: number) => {
   const tableListDataSource: API.RuleListItem[] = [];
 
@@ -32,6 +37,13 @@ const genList = (current: number, pageSize: number) => {
 
 let tableListDataSource = genList(1, 100);
 
+/**
+ * 获取规则列表数据
+ * @param {Request} req - Express 请求对象
+ * @param {Response} res - Express 响应对象
+ * @param {string} u - 请求的URL
+ * @returns {void}
+ */
 function getRule(req: Request, res: Response, u: string) {
   let realUrl = u;
   if (!realUrl || Object.prototype.toString.call(realUrl) !== '[object String]') {
@@ -105,6 +117,14 @@ function getRule(req: Request, res: Response, u: string) {
   return res.json(result);
 }
 
+/**
+ * 处理规则列表的POST请求
+ * @param {Request} req - Express 请求对象
+ * @param {Response} res - Express 响应对象
+ * @param {string} u - 请求的URL
+ * @param {Request} b - 请求的body
+ * @returns {void}
+ */
 function postRule(req: Request, res: Response, u: string, b: Request) {
   let realUrl = u;
   if (!realUrl || Object.prototype.toString.call(realUrl) !== '[object String]') {

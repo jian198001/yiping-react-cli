@@ -1,15 +1,30 @@
 import { Request, Response } from 'express';
 
+/**
+ * 等待指定时间
+ * @param {number} time - 等待时间，默认为100毫秒
+ * @returns {Promise<boolean>} - 返回一个Promise，在指定时间后解析为true
+ */
 const waitTime = (time: number = 100) => {
+  // 返回一个新的Promise
   return new Promise((resolve) => {
+    // 使用setTimeout在指定时间后调用resolve函数
     setTimeout(() => {
       resolve(true);
     }, time);
   });
 };
 
+/**
+ * 获取模拟验证码
+ * @param {Request} req - Express 请求对象
+ * @param {Response} res - Express 响应对象
+ * @returns {Promise<void>} - 返回一个Promise，在等待2秒后发送验证码
+ */
 async function getFakeCaptcha(req: Request, res: Response) {
+  // 等待2秒
   await waitTime(2000);
+  // 返回包含验证码的JSON响应
   return res.json('captcha-xxx');
 }
 

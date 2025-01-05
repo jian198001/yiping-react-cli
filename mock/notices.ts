@@ -1,6 +1,13 @@
 import { Request, Response } from 'express';
 
+/**
+ * 获取通知列表
+ * @param {Request} req - Express 请求对象
+ * @param {Response} res - Express 响应对象
+ * @returns {void}
+ */
 const getNotices = (req: Request, res: Response) => {
+  // 返回包含通知列表的 JSON 响应
   res.json({
     data: [
       {

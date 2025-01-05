@@ -1,10 +1,17 @@
 {
+  // 编译器选项
   "compilerOptions": {
+    // 启用 JSX 语法，使用 React JSX 转换
     "jsx": "react-jsx",
+    // 启用装饰器元数据发射
     "emitDecoratorMetadata": true,
+    // 启用实验性装饰器
     "experimentalDecorators": true,
+    // 基础 URL，用于解析非相对模块名
     "baseUrl": ".",
+    // 路径别名配置
     "paths": {
+      // 别名@指向src目录下的所有文件
       "@/*": ["./src/*"]
     }
   }

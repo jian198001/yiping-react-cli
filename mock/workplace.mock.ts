@@ -234,7 +234,7 @@ const getNotice = (_: Request, res: Response) => {
         logo: avatars[5],
         description: '生命就像一盒巧克力，结果往往出人意料',
         updatedAt: new Date('2017-07-23'),
-        member: '骗你来学计算机',
+        member: '骗人来学计算机',
         href: '',
         memberLink: '',
       },
@@ -393,14 +393,20 @@ radarOriginData.forEach((item) => {
     }
   });
 });
-
+/**
+ * 处理图表数据请求
+ * @param {Request} req - Express 请求对象
+ * @param {Response} res - Express 响应对象
+ * @returns {void}
+ */
 const getChartData = (_: Request, res: Response) => {
+  // 返回包含图表数据的 JSON 响应
   res.json({
     data: {
-      visitData,
-      visitData2,
-      salesData,
-      searchData,
+      visitData, // 访问数据
+      visitData2, // 访问数据2
+      salesData, // 销售数据
+      searchData, // 搜索数据
       offlineData,
       offlineChartData,
       salesTypeData,

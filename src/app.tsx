@@ -11,7 +11,9 @@ const loginPath = '/user/login';
 
 /**
  * @see  https://umijs.org/zh-CN/plugins/plugin-initial-state
- * */
+ * 获取初始状态的异步函数，返回包含布局设置和当前用户信息的对象
+ * @returns {Promise<{settings?: Partial<LayoutSettings>, currentUser?: API.CurrentUser, loading?: boolean, fetchUserInfo?: () => Promise<API.CurrentUser | undefined>}>} - 包含布局设置和当前用户信息的对象
+ */
 export async function getInitialState(): Promise<{
   settings?: Partial<LayoutSettings>;
   currentUser?: API.CurrentUser;
@@ -19,17 +21,22 @@ export async function getInitialState(): Promise<{
   fetchUserInfo?: () => Promise<API.CurrentUser | undefined>;
 }> {
 
+  /**
+   * 异步获取当前用户信息的函数
+   * @returns {Promise<API.CurrentUser | undefined>} - 当前用户信息或undefined
+   */
   const fetchUserInfo = async () => {
     try {
- 
+      // 调用查询当前用户的API
       let msg = await queryCurrentUser({
         skipErrorHandler: true,
       });
-
+      // 打印查询结果
       console.log(msg);      
- 
+      // 返回查询到的用户数据
       return msg.data;
     } catch (error) {
+      // 如果发生错误，重定向到登录页面
       history.push(loginPath);
     }
     return undefined;
@@ -37,7 +44,7 @@ export async function getInitialState(): Promise<{
   // 如果不是登录页面，执行
   const { location } = history;
   if (![loginPath, '/user/register', '/user/register-result'].includes(location.pathname)) {
-
+    // 获取当前用户信息
     const currentUser = await fetchUserInfo();
     return {
       fetchUserInfo,
@@ -53,9 +60,10 @@ export async function getInitialState(): Promise<{
 
 // ProLayout 支持的api https://procomponents.ant.design/components/layout
 export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) => {
- 
   return {
+    // 渲染动作栏的函数，返回一个包含语言选择组件的数组
     actionsRender: () => [<SelectLang key="SelectLang" />],
+    // 头像属性，设置头像的源、标题和渲染函数
     avatarProps: {
       src: initialState?.currentUser?.avatar,
       title: <AvatarName />,
@@ -63,21 +71,22 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
         return <AvatarDropdown>{avatarChildren}</AvatarDropdown>;
       },
     },
+    // 水印属性，设置水印的内容为当前用户的名称
     waterMarkProps: {
       content: initialState?.currentUser?.name,
     },
+    // 页脚渲染函数，返回一个页脚组件
     footerRender: () => <Footer />,
+    // 页面切换时的回调函数，用于处理未登录时的重定向
     onPageChange: () => {
-      
       const { location } = history;
       // 如果没有登录，重定向到 login
       if (!initialState?.currentUser && location.pathname !== loginPath) {
-
         // return
-
         history.push(loginPath);
       }
     },
+    // 背景布局图片列表，设置背景图片的源、位置和高度
     bgLayoutImgList: [
       {
         src: 'https://mdn.alipayobjects.com/yuyan_qk0oxh/afts/img/D2LWSqNny4sAAAAAAAAAAAAAFl94AQBr',
@@ -86,11 +95,13 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
         height: '303px',
       },
     ],
+    // 开发环境下的链接列表，用于调试
     links: isDev
       ? [
            
         ]
       : [],
+    // 菜单头部渲染函数，未定义
     menuHeaderRender: undefined,
     // 自定义 403 页面
     // unAccessible: <div>unAccessible</div>,
@@ -116,10 +127,12 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
         </>
       );
     },
+    // 右侧渲染函数，未实现
     rightRender: (initialState, setInitialState) => {
       // xxx
       return 'xxx';
     },
+    // 扩展布局设置
     ...initialState?.settings,
   };
 };
@@ -130,6 +143,8 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
  * @doc https://umijs.org/docs/max/request#配置
  */
 export const request: RequestConfig = {
+  // 请求的基础URL
   baseURL: '/api',
+  // 错误配置
   ...errorConfig,
 };

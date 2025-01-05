@@ -2,10 +2,18 @@ import dayjs from 'dayjs';
 import type { Request, Response } from 'express';
 import type { AnalysisData, DataItem, RadarData } from './data';
 
+/**
+ * mock数据
+ * @description 生成模拟的分析数据，用于前端展示
+ */
 // mock data
 const visitData: DataItem[] = [];
 const beginDay = new Date().getTime();
 
+/**
+ * 生成访问数据
+ * @description 根据给定的日期范围和随机生成的Y值，生成访问数据
+ */
 const fakeY = [7, 5, 4, 2, 4, 7, 5, 6, 5, 9, 6, 3, 1, 5, 3, 6, 5];
 for (let i = 0; i < fakeY.length; i += 1) {
   visitData.push({
@@ -14,6 +22,10 @@ for (let i = 0; i < fakeY.length; i += 1) {
   });
 }
 
+/**
+ * 生成访问数据2
+ * @description 根据给定的日期范围和随机生成的Y值，生成访问数据2
+ */
 const visitData2 = [];
 const fakeY2 = [1, 6, 4, 8, 3, 7, 2];
 for (let i = 0; i < fakeY2.length; i += 1) {
@@ -23,6 +35,10 @@ for (let i = 0; i < fakeY2.length; i += 1) {
   });
 }
 
+/**
+ * 生成销售数据
+ * @description 根据给定的月份范围和随机生成的Y值，生成销售数据
+ */
 const salesData = [];
 for (let i = 0; i < 12; i += 1) {
   salesData.push({
@@ -30,6 +46,11 @@ for (let i = 0; i < 12; i += 1) {
     y: Math.floor(Math.random() * 1000) + 200,
   });
 }
+
+/**
+ * 生成搜索数据
+ * @description 根据给定的索引范围和随机生成的关键词、计数、范围和状态，生成搜索数据
+ */
 const searchData = [];
 for (let i = 0; i < 50; i += 1) {
   searchData.push({
@@ -40,6 +61,11 @@ for (let i = 0; i < 50; i += 1) {
     status: Math.floor((Math.random() * 10) % 2),
   });
 }
+
+/**
+ * 生成销售类型数据
+ * @description 生成不同销售类型的销售数据
+ */
 const salesTypeData = [
   {
     x: '家用电器',
@@ -67,6 +93,10 @@ const salesTypeData = [
   },
 ];
 
+/**
+ * 生成线上销售类型数据
+ * @description 生成不同销售类型的线上销售数据
+ */
 const salesTypeDataOnline = [
   {
     x: '家用电器',
@@ -94,6 +124,10 @@ const salesTypeDataOnline = [
   },
 ];
 
+/**
+ * 生成线下销售类型数据
+ * @description 生成不同销售类型的线下销售数据
+ */
 const salesTypeDataOffline = [
   {
     x: '家用电器',
@@ -117,6 +151,10 @@ const salesTypeDataOffline = [
   },
 ];
 
+/**
+ * 生成线下数据
+ * @description 根据给定的店铺范围和随机生成的CVR值，生成线下数据
+ */
 const offlineData = [];
 for (let i = 0; i < 10; i += 1) {
   offlineData.push({
@@ -124,6 +162,11 @@ for (let i = 0; i < 10; i += 1) {
     cvr: Math.ceil(Math.random() * 9) / 10,
   });
 }
+
+/**
+ * 生成线下图表数据
+ * @description 根据给定的时间范围和随机生成的客流量、支付笔数值，生成线下图表数据
+ */
 const offlineChartData = [];
 for (let i = 0; i < 20; i += 1) {
   const date = dayjs(new Date().getTime() + 1000 * 60 * 30 * i).format('HH:mm');
@@ -139,6 +182,10 @@ for (let i = 0; i < 20; i += 1) {
   });
 }
 
+/**
+ * 生成雷达原始数据
+ * @description 生成不同维度的雷达原始数据
+ */
 const radarOriginData = [
   {
     name: '个人',
@@ -166,6 +213,10 @@ const radarOriginData = [
   },
 ];
 
+/**
+ * 生成雷达数据
+ * @description 根据雷达原始数据生成雷达数据
+ */
 const radarData: RadarData[] = [];
 const radarTitleMap = {
   ref: '引用',
@@ -186,6 +237,10 @@ radarOriginData.forEach((item) => {
   });
 });
 
+/**
+ * 获取模拟图表数据
+ * @description 返回生成的模拟分析数据
+ */
 const getFakeChartData: AnalysisData = {
   visitData,
   visitData2,
@@ -199,6 +254,10 @@ const getFakeChartData: AnalysisData = {
   radarData,
 };
 
+/**
+ * 模拟图表数据
+ * @description 处理GET请求，返回模拟的分析数据
+ */
 const fakeChartData = (_: Request, res: Response) => {
   return res.json({
     data: getFakeChartData,
