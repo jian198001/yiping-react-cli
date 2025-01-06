@@ -1,52 +1,106 @@
+/**
+ * 导出的默认对象，包含了应用程序菜单的各种本地化字符串。
+ * 这些字符串用于在用户界面中显示不同的文本内容，以支持多语言功能。
+ */
 export default {
+  // 欢迎页面的标签
   'menu.welcome': '歡 迎',
+  // 更多区块页面的标签
   'menu.more-blocks': '更多區塊',
+  // 首页的标签
   'menu.home': '首 頁',
+  // 权限管理页面的标签
   'menu.admin': '权 限',
+  // 权限管理页面二级子页面的标签
   'menu.admin.sub-page': '二级管理页',
+  // 登录页面的标签
   'menu.login': '登 錄',
+  // 注册页面的标签
   'menu.register': '註 冊',
+  // 注册结果页面的标签
   'menu.register-result': '註冊結果',
+  // Dashboard页面的标签
   'menu.dashboard': 'Dashboard',
+  // Dashboard分析页面的标签
   'menu.dashboard.analysis': '分析頁',
+  // Dashboard监控页面的标签
   'menu.dashboard.monitor': '監控頁',
+  // Dashboard工作台页面的标签
   'menu.dashboard.workplace': '工作臺',
+  // 403异常页面的标签
   'menu.exception.403': '403',
+  // 404异常页面的标签
   'menu.exception.404': '404',
+  // 500异常页面的标签
   'menu.exception.500': '500',
+  // 表单页面的标签
   'menu.form': '表單頁',
+  // 基础表单页面的标签
   'menu.form.basic-form': '基礎表單',
+  // 分步表单页面的标签
   'menu.form.step-form': '分步表單',
+  // 分步表单信息页面的标签
   'menu.form.step-form.info': '分步表單（填寫轉賬信息）',
+  // 分步表单确认页面的标签
   'menu.form.step-form.confirm': '分步表單（確認轉賬信息）',
+  // 分步表单结果页面的标签
   'menu.form.step-form.result': '分步表單（完成）',
+  // 高级表单页面的标签
   'menu.form.advanced-form': '高級表單',
+  // 列表页面的标签
   'menu.list': '列表頁',
+  // 查询表格页面的标签
   'menu.list.table-list': '查詢表格',
+  // 标准列表页面的标签
   'menu.list.basic-list': '標淮列表',
+  // 卡片列表页面的标签
   'menu.list.card-list': '卡片列表',
+  // 搜索列表页面的标签
   'menu.list.search-list': '搜索列表',
+  // 搜索列表文章页面的标签
   'menu.list.search-list.articles': '搜索列表（文章）',
+  // 搜索列表项目页面的标签
   'menu.list.search-list.projects': '搜索列表（項目）',
+  // 搜索列表应用页面的标签
   'menu.list.search-list.applications': '搜索列表（應用）',
+  // 详情页面的标签
   'menu.profile': '詳情頁',
+  // 基础详情页面的标签
   'menu.profile.basic': '基礎詳情頁',
+  // 高级详情页面的标签
   'menu.profile.advanced': '高級詳情頁',
+  // 结果页面的标签
   'menu.result': '結果頁',
+  // 成功页面的标签
   'menu.result.success': '成功頁',
+  // 失败页面的标签
   'menu.result.fail': '失敗頁',
+  // 异常页面的标签
   'menu.exception': '异常页',
+  // 无权限异常页面的标签
   'menu.exception.not-permission': '403',
+  // 未找到异常页面的标签
   'menu.exception.not-find': '404',
+  // 服务器错误异常页面的标签
   'menu.exception.server-error': '500',
+  // 触发错误页面的标签
   'menu.exception.trigger': '触发错误',
+  // 个人页面的标签
   'menu.account': '個人頁',
+  // 个人中心页面的标签
   'menu.account.center': '個人中心',
+  // 个人设置页面的标签
   'menu.account.settings': '個人設置',
+  // 触发报错页面的标签
   'menu.account.trigger': '觸發報錯',
+  // 退出登录页面的标签
   'menu.account.logout': '退出登錄',
+  // 图形编辑器页面的标签
   'menu.editor': '圖形編輯器',
+  // 流程编辑器页面的标签
   'menu.editor.flow': '流程編輯器',
+  // 脑图编辑器页面的标签
   'menu.editor.mind': '腦圖編輯器',
+  // 拓扑编辑器页面的标签
   'menu.editor.koni': '拓撲編輯器',
 };

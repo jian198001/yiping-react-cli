@@ -14,26 +14,38 @@ const InfoCard: React.FC<{
   desc: string;
   href: string;
 }> = ({ title, href, index, desc }) => {
+  // 使用 Ant Design 的主题钩子
   const { useToken } = theme;
 
+  // 获取当前主题的 token
   const { token } = useToken();
 
   return (
     <div
       style={{
+        // 背景颜色使用 token 中的颜色
         backgroundColor: token.colorBgContainer,
+        // 阴影使用 token 中的阴影样式
         boxShadow: token.boxShadow,
+        // 边框半径为 8px
         borderRadius: '8px',
+        // 字体大小为 14px
         fontSize: '14px',
+        // 文字颜色使用 token 中的次要文字颜色
         color: token.colorTextSecondary,
+        // 行高为 22px
         lineHeight: '22px',
+        // 内边距为 16px 19px
         padding: '16px 19px',
+        // 最小宽度为 220px
         minWidth: '220px',
+        // 弹性布局，占满剩余空间
         flex: 1,
       }}
     >
       <div
         style={{
+          // 弹性布局，子元素之间有 4px 的间隙，垂直居中对齐
           display: 'flex',
           gap: '4px',
           alignItems: 'center',
@@ -41,14 +53,21 @@ const InfoCard: React.FC<{
       >
         <div
           style={{
+            // 宽度为 48px，高度为 48px
             width: 48,
             height: 48,
             lineHeight: '22px',
+            // 背景图片大小为 100%
             backgroundSize: '100%',
+            // 文本居中对齐
             textAlign: 'center',
+            // 内边距为 8px 16px 16px 12px
             padding: '8px 16px 16px 12px',
+            // 文字颜色为白色
             color: '#FFF',
+            // 字体加粗
             fontWeight: 'bold',
+            // 背景图片
             backgroundImage:
               "url('https://gw.alipayobjects.com/zos/bmw-prod/daaf8d50-8e6d-4251-905d-676a24ddfa12.svg')",
           }}
@@ -57,8 +76,11 @@ const InfoCard: React.FC<{
         </div>
         <div
           style={{
+            // 字体大小为 16px
             fontSize: '16px',
+            // 文字颜色使用 token 中的主要文字颜色
             color: token.colorText,
+            // 底部内边距为 8px
             paddingBottom: 8,
           }}
         >
@@ -67,10 +89,15 @@ const InfoCard: React.FC<{
       </div>
       <div
         style={{
+          // 字体大小为 14px
           fontSize: '14px',
+          // 文字颜色使用 token 中的次要文字颜色
           color: token.colorTextSecondary,
+          // 文本两端对齐
           textAlign: 'justify',
+          // 行高为 22px
           lineHeight: '22px',
+          // 底部外边距为 8px
           marginBottom: 8,
         }}
       >
@@ -84,15 +111,19 @@ const InfoCard: React.FC<{
 };
 
 const Welcome: React.FC = () => {
+  // 使用 Ant Design 的主题钩子获取当前主题的 token
   const { token } = theme.useToken();
+  // 使用 umi 的 useModel 钩子获取初始状态
   const { initialState } = useModel('@@initialState');
   return (
     <PageContainer>
       <Card
         style={{
+          // 边框半径为 8px
           borderRadius: 8,
         }}
         bodyStyle={{
+          // 根据初始状态的导航主题设置背景图片
           backgroundImage:
             initialState?.settings?.navTheme === 'realDark'
               ? 'background-image: linear-gradient(75deg, #1A1B1F 0%, #191C1F 100%)'
@@ -101,16 +132,22 @@ const Welcome: React.FC = () => {
       >
         <div
           style={{
+            // 背景图片位置为右下角
             backgroundPosition: '100% -30%',
+            // 背景图片不重复
             backgroundRepeat: 'no-repeat',
+            // 背景图片大小为 274px 自动
             backgroundSize: '274px auto',
+            // 背景图片
             backgroundImage:
               "url('https://gw.alipayobjects.com/mdn/rms_a9745b/afts/img/A*BuFmQqsB2iAAAAAAAAAAAAAAARQnAQ')",
           }}
         >
           <div
             style={{
+              // 字体大小为 20px
               fontSize: '20px',
+              // 文字颜色使用 token 中的标题文字颜色
               color: token.colorTextHeading,
             }}
           >
@@ -118,17 +155,24 @@ const Welcome: React.FC = () => {
           </div>
           <p
             style={{
+              // 字体大小为 14px
               fontSize: '14px',
+              // 文字颜色使用 token 中的次要文字颜色
               color: token.colorTextSecondary,
+              // 行高为 22px
               lineHeight: '22px',
+              // 顶部外边距为 16px
               marginTop: 16,
+              // 底部外边距为 32px
               marginBottom: 32,
+              // 宽度为父容器的 65%
               width: '65%',
             }}
           > 
           </p>
           <div
             style={{
+              // 弹性布局，允许换行，子元素之间有 16px 的间隙
               display: 'flex',
               flexWrap: 'wrap',
               gap: 16,

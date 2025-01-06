@@ -1,52 +1,106 @@
+/**
+ * 菜单组件的日语语言包
+ * 包含了各种菜单选项及其子选项的文本，以及异常页面和账户管理相关的文本
+ */
 export default {
+  // 欢迎页面的文本
   'menu.welcome': 'ようこそ',
+  // 更多模块页面的文本
   'menu.more-blocks': 'その他のブロック',
+  // 主页的文本
   'menu.home': 'ホーム',
+  // 管理员页面的文本
   'menu.admin': '管理者',
+  // 管理员子页面的文本
   'menu.admin.sub-page': 'サブページ',
+  // 登录页面的文本
   'menu.login': 'ログイン',
+  // 注册页面的文本
   'menu.register': '登録',
+  // 注册结果页面的文本
   'menu.register-result': '登録結果',
+  // 仪表盘页面的文本
   'menu.dashboard': 'ダッシュボード',
+  // 仪表盘分析页面的文本
   'menu.dashboard.analysis': '分析',
+  // 仪表盘监控页面的文本
   'menu.dashboard.monitor': 'モニター',
+  // 仪表盘工作区页面的文本
   'menu.dashboard.workplace': '職場',
+  // 403异常页面的文本
   'menu.exception.403': '403',
+  // 404异常页面的文本
   'menu.exception.404': '404',
+  // 500异常页面的文本
   'menu.exception.500': '500',
+  // 表单页面的文本
   'menu.form': 'フォーム',
+  // 基本表单页面的文本
   'menu.form.basic-form': '基本フォーム',
+  // 步骤表单页面的文本
   'menu.form.step-form': 'ステップフォーム',
+  // 步骤表单信息页面的文本
   'menu.form.step-form.info': 'ステップフォーム（転送情報の書き込み）',
+  // 步骤表单确认页面的文本
   'menu.form.step-form.confirm': 'ステップフォーム（転送情報の確認）',
+  // 步骤表单结果页面的文本
   'menu.form.step-form.result': 'ステップフォーム（完成）',
+  // 高级表单页面的文本
   'menu.form.advanced-form': '高度なフォーム',
+  // 列表页面的文本
   'menu.list': 'リスト',
+  // 表格列表页面的文本
   'menu.list.table-list': '検索テーブル',
+  // 基本列表页面的文本
   'menu.list.basic-list': '基本リスト',
+  // 卡片列表页面的文本
   'menu.list.card-list': 'カードリスト',
+  // 搜索列表页面的文本
   'menu.list.search-list': '検索リスト',
+  // 搜索列表文章页面的文本
   'menu.list.search-list.articles': '検索リスト(記事)',
+  // 搜索列表项目页面的文本
   'menu.list.search-list.projects': '検索リスト(プロジェクト)',
+  // 搜索列表应用页面的文本
   'menu.list.search-list.applications': '検索リスト(アプリ)',
+  // 个人资料页面的文本
   'menu.profile': 'プロフィール',
+  // 基本资料页面的文本
   'menu.profile.basic': '基本プロフィール',
+  // 高级资料页面的文本
   'menu.profile.advanced': '高度なプロフィール',
+  // 结果页面的文本
   'menu.result': '結果',
+  // 成功结果页面的文本
   'menu.result.success': '成功',
+  // 失败结果页面的文本
   'menu.result.fail': '失敗',
+  // 异常页面的文本
   'menu.exception': '例外',
+  // 无权限异常页面的文本
   'menu.exception.not-permission': '403',
+  // 未找到异常页面的文本
   'menu.exception.not-find': '404',
+  // 服务器错误异常页面的文本
   'menu.exception.server-error': '500',
+  // 触发异常页面的文本
   'menu.exception.trigger': 'トリガー',
+  // 账户页面的文本
   'menu.account': 'アカウント',
+  // 账户中心页面的文本
   'menu.account.center': 'アカウントセンター',
+  // 账户设置页面的文本
   'menu.account.settings': 'アカウント設定',
+  // 触发错误页面的文本
   'menu.account.trigger': 'トリガーエラー',
+  // 登出页面的文本
   'menu.account.logout': 'ログアウト',
+  // 图形编辑器页面的文本
   'menu.editor': 'グラフィックエディタ',
+  // 流程编辑器页面的文本
   'menu.editor.flow': 'フローエディタ',
+  // 思维导图编辑器页面的文本
   'menu.editor.mind': 'マインドエディター',
+  // Koni编辑器页面的文本
   'menu.editor.koni': 'コニエディター',
 };

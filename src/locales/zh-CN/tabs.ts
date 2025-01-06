@@ -1,6 +1,14 @@
+/**
+ * 导出的默认对象，包含了应用程序标签页操作的各种本地化字符串。
+ * 这些字符串用于在用户界面中显示不同的文本内容，以支持多语言功能。
+ */
 export default {
-    'tabs.close.left': '关闭左侧',
-    'tabs.close.right': '关闭右侧',
-    'tabs.close.others': '关闭其他',
-    'tabs.refresh': '刷新',
-  };
+  // 关闭左侧标签页的操作标签
+  'tabs.close.left': '关闭左侧',
+  // 关闭右侧标签页的操作标签
+  'tabs.close.right': '关闭右侧',
+  // 关闭其他标签页的操作标签
+  'tabs.close.others': '关闭其他',
+  // 刷新当前标签页的操作标签
+  'tabs.refresh': '刷新',
+};
