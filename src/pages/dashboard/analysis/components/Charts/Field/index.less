@@ -1,17 +1,36 @@
+// 导入 antd 默认主题的 less 文件
 @import '~antd/es/style/themes/default.less';
 
+/**
+ * 字段组件的样式
+ */
 .field {
+  // 外边距为0
   margin: 0;
+  // 溢出隐藏
   overflow: hidden;
+  // 不换行
   white-space: nowrap;
+  // 文本溢出显示省略号
   text-overflow: ellipsis;
+  /**
+   * 标签和数字的样式
+   */
   .label,
   .number {
+    // 字体大小为基础字体大小
     font-size: @font-size-base;
+    // 行高为22px
     line-height: 22px;
   }
+
+  /**
+   * 数字的样式
+   */
   .number {
+    // 左边距为8px
     margin-left: 8px;
+    // 颜色为标题颜色
     color: @heading-color;
   }
 }

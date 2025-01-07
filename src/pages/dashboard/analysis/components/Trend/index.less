@@ -1,37 +1,70 @@
+// 导入 antd 默认主题的 less 文件
 @import '~antd/es/style/themes/default.less';
 
+/**
+ * 趋势项的样式
+ */
 .trendItem {
+  // 显示为内联块元素
   display: inline-block;
+  // 设置字体大小为基础字体大小
   font-size: @font-size-base;
+  // 设置行高为22px
   line-height: 22px;
 
+  /**
+   * 上升和下降趋势的样式
+   */
   .up,
   .down {
+    // 相对定位
     position: relative;
+    // 顶部偏移量为1px
     top: 1px;
+    // 左边距为4px
     margin-left: 4px;
     span {
+      // 字体大小为12px
       font-size: 12px;
+      // 缩放比例为0.83
       transform: scale(0.83);
     }
   }
+  /**
+   * 上升趋势的样式
+   */
   .up {
+    // 颜色为红色
     color: @red-6;
   }
+  /**
+   * 下降趋势的样式
+   */
   .down {
+    // 顶部偏移量为-1px
     top: -1px;
+    // 颜色为绿色
     color: @green-6;
   }
 
+  /**
+   * 灰色趋势项的样式
+   */
   &.trendItemGrey .up,
   &.trendItemGrey .down {
+    // 颜色为文本颜色
     color: @text-color;
   }
 
+  /**
+   * 反转颜色的样式
+   */
   &.reverseColor .up {
+    // 颜色为绿色
     color: @green-6;
   }
   &.reverseColor .down {
+    // 颜色为红色
     color: @red-6;
   }
 }

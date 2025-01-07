@@ -1,51 +1,96 @@
+/**
+ * 定义活跃图表的样式
+ */
 .activeChart {
+  // 设置元素的定位方式为相对定位
   position: relative;
 }
+
+/**
+ * 定义活跃图表网格的样式
+ */
 .activeChartGrid {
   p {
+    // 设置元素的定位方式为绝对定位
     position: absolute;
+    // 设置元素距离顶部的距离为80px
     top: 80px;
   }
   p:last-child {
+    // 设置最后一个 <p> 元素距离顶部的距离为115px
     top: 115px;
   }
 }
+
+/**
+ * 定义活跃图表图例的样式
+ */
 .activeChartLegend {
+  // 设置元素的定位方式为相对定位
   position: relative;
+  // 设置元素的高度为20px
   height: 20px;
+  // 设置元素距离顶部的距离为8px
   margin-top: 8px;
+  // 设置字体大小为0，用于去除默认的行内元素间距
   font-size: 0;
+  // 设置行高为20px
   line-height: 20px;
   span {
+    // 设置元素的显示方式为内联块级元素
     display: inline-block;
+    // 设置元素的宽度为父容器的33.33%
     width: 33.33%;
+    // 设置字体大小为12px
     font-size: 12px;
+    // 设置文本居中对齐
     text-align: center;
   }
   span:first-child {
+    // 设置第一个 <span> 元素文本左对齐
     text-align: left;
   }
   span:last-child {
+    // 设置最后一个 <span> 元素文本右对齐
     text-align: right;
   }
 }
+
+/**
+ * 定义虚线的样式
+ */
 .dashedLine {
+  // 设置元素的定位方式为相对定位
   position: relative;
+  // 设置元素距离顶部的距离为-70px
   top: -70px;
+  // 设置元素距离左侧的距离为-3px
   left: -3px;
+  // 设置元素的高度为1px
   height: 1px;
 
   .line {
+    // 设置元素的定位方式为绝对定位
     position: absolute;
+    // 设置元素距离顶部的距离为0
     top: 0;
+    // 设置元素距离左侧的距离为0
     left: 0;
+    // 设置元素的宽度为100%
     width: 100%;
+    // 设置元素的高度为100%
     height: 100%;
+    // 设置背景图像为线性渐变，从透明到 #e9e9e9，每个颜色段的宽度为6px
     background-image: linear-gradient(to right, transparent 50%, #e9e9e9 50%);
+    // 设置背景图像的大小为6px
     background-size: 6px;
   }
 }
 
+/**
+ * 定义最后一个虚线的样式
+ */
 .dashedLine:last-child {
+  // 设置元素距离顶部的距离为-36px
   top: -36px;
 }

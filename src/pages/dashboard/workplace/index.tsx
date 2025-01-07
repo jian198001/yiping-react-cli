@@ -1,16 +1,30 @@
+// 导入 Radar 组件，用于绘制雷达图
 import { Radar } from '@ant-design/plots';
+// 导入 PageContainer 组件，用于布局页面
 import { PageContainer } from '@ant-design/pro-components';
+// 导入 Link 和 useRequest 组件，用于处理链接和请求
 import { Link, useRequest } from '@umijs/max';
+// 导入 Ant Design 中的 Avatar、Card、Col、List、Row、Skeleton、Statistic 组件
 import { Avatar, Card, Col, List, Row, Skeleton, Statistic } from 'antd';
+// 导入 dayjs 库，用于处理日期和时间
 import dayjs from 'dayjs';
+// 导入 relativeTime 插件，用于格式化相对时间
 import relativeTime from 'dayjs/plugin/relativeTime';
+// 导入 FC 类型，用于定义函数式组件
 import type { FC } from 'react';
+// 导入 EditableLinkGroup 组件，用于编辑链接组
 import EditableLinkGroup from './components/EditableLinkGroup';
+// 导入 ActivitiesType 和 CurrentUser 类型，用于定义活动和当前用户的数据结构
 import type { ActivitiesType, CurrentUser } from './data.d';
+// 导入 fakeChartData、queryActivities、queryProjectNotice 函数，用于获取假数据、活动数据和项目通知数据
 import { fakeChartData, queryActivities, queryProjectNotice } from './service';
+// 导入 useStyles 钩子，用于获取样式
 import useStyles from './style.style';
+
+// 初始化 dayjs 的 relativeTime 插件
 dayjs.extend(relativeTime);
 
+// 定义链接数组
 const links = [
   {
     title: '操作一',
@@ -37,11 +51,21 @@ const links = [
     href: '',
   },
 ];
+
+/**
+ * PageHeaderContent 组件
+ * @param {Object} props - 组件的属性
+ * @param {Partial<CurrentUser>} props.currentUser - 当前用户的信息
+ * @returns {JSX.Element} 页面头部内容的 JSX 元素
+ */
 const PageHeaderContent: FC<{
   currentUser: Partial<CurrentUser>;
 }> = ({ currentUser }) => {
+  // 使用 useStyles 钩子获取样式
   const { styles } = useStyles();
+  // 判断当前用户是否加载完成
   const loading = currentUser && Object.keys(currentUser).length;
+  // 如果当前用户未加载完成，显示骨架屏
   if (!loading) {
     return (
       <Skeleton
@@ -53,6 +77,7 @@ const PageHeaderContent: FC<{
       />
     );
   }
+  // 返回页面头部内容的 JSX 元素
   return (
     <div className={styles.pageHeaderContent}>
       <div className={styles.avatar}>
@@ -71,8 +96,16 @@ const PageHeaderContent: FC<{
     </div>
   );
 };
+
+/**
+ * ExtraContent 组件
+ * @param {Object} props - 组件的属性
+ * @returns {JSX.Element} 额外内容的 JSX 元素
+ */
 const ExtraContent: FC<Record<string, any>> = () => {
+  // 使用 useStyles 钩子获取样式
   const { styles } = useStyles();
+  // 返回额外内容的 JSX 元素
   return (
     <div className={styles.extraContent}>
       <div className={styles.statItem}>
@@ -87,13 +120,30 @@ const ExtraContent: FC<Record<string, any>> = () => {
     </div>
   );
 };
+
+/**
+ * Workplace 组件
+ * @returns {JSX.Element} 工作区页面的 JSX 元素
+ */
 const Workplace: FC = () => {
+  // 使用 useStyles 钩子获取样式
   const { styles } = useStyles();
+  // 使用 useRequest 钩子获取项目通知数据
   const { loading: projectLoading, data: projectNotice = [] } = useRequest(queryProjectNotice);
+  // 使用 useRequest 钩子获取活动数据
   const { loading: activitiesLoading, data: activities = [] } = useRequest(queryActivities);
+  // 使用 useRequest 钩子获取图表数据
   const { data } = useRequest(fakeChartData);
+
+  /**
+   * 渲染活动列表项
+   * @param {ActivitiesType} item - 活动数据
+   * @returns {JSX.Element} 活动列表项的 JSX 元素
+   */
   const renderActivities = (item: ActivitiesType) => {
+    // 将活动模板字符串按特定格式分割成数组，并映射处理
     const events = item.template.split(/@\{([^{}]*)\}/gi).map((key) => {
+      // 如果活动数据中存在对应字段，则返回链接元素
       if (item[key as keyof ActivitiesType]) {
         const value = item[key as 'user'];
         return (
@@ -102,8 +152,11 @@ const Workplace: FC = () => {
           </a>
         );
       }
+      // 否则返回原字符串
       return key;
     });
+
+    // 返回活动列表项的 JSX 元素
     return (
       <List.Item key={item.id}>
         <List.Item.Meta
@@ -125,6 +178,7 @@ const Workplace: FC = () => {
     );
   };
 
+  // 返回工作区页面的 JSX 元素
   return (
     <PageContainer
       content={
@@ -175,7 +229,7 @@ const Workplace: FC = () => {
                     description={item.description}
                   />
                   <div className={styles.projectItemContent}>
-                    <Link to={item.memberLink || '/'}>{item.member || ''}</Link>
+                    <Link to={item.memberLink
                     {item.updatedAt && (
                       <span className={styles.datetime} title={item.updatedAt}>
                         {dayjs(item.updatedAt).fromNow()}

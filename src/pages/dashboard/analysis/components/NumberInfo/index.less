@@ -1,67 +1,157 @@
+// 导入 antd 默认主题的 less 文件
 @import '~antd/es/style/themes/default.less';
 
+/**
+ * 数字信息组件的样式
+ */
 .numberInfo {
+  /**
+   * 后缀样式
+   */
   .suffix {
+    // 左边距为4px
     margin-left: 4px;
+    // 颜色为文本颜色
     color: @text-color;
+    // 字体大小为16px
     font-size: 16px;
+    // 字体样式为正常
     font-style: normal;
   }
+
+  /**
+   * 数字信息标题样式
+   */
   .numberInfoTitle {
+    // 底部外边距为16px
     margin-bottom: 16px;
+    // 颜色为文本颜色
     color: @text-color;
+    // 字体大小为大字体
     font-size: @font-size-lg;
+    // 过渡效果为所有属性0.3秒
     transition: all 0.3s;
   }
+
+  /**
+   * 数字信息副标题样式
+   */
   .numberInfoSubTitle {
+    // 高度为22px
     height: 22px;
+    // 溢出隐藏
     overflow: hidden;
+    // 颜色为次要文本颜色
     color: @text-color-secondary;
+    // 字体大小为基础字体大小
     font-size: @font-size-base;
+    // 行高为22px
     line-height: 22px;
+    // 不换行
     white-space: nowrap;
+    // 文本溢出显示省略号
     text-overflow: ellipsis;
+    // 单词换行
     word-break: break-all;
   }
+
+  /**
+   * 数字信息值样式
+   */
   .numberInfoValue {
+    // 顶部外边距为4px
     margin-top: 4px;
+    // 溢出隐藏
     overflow: hidden;
+    // 字体大小为0
     font-size: 0;
+    // 不换行
     white-space: nowrap;
+    // 文本溢出显示省略号
     text-overflow: ellipsis;
+    // 单词换行
     word-break: break-all;
+
+    /**
+     * 数字信息值内部的 span 样式
+     */
     & > span {
+      // 显示为内联块元素
       display: inline-block;
+      // 高度为32px
       height: 32px;
+      // 右边距为32px
       margin-right: 32px;
+      // 颜色为标题颜色
       color: @heading-color;
+      // 字体大小为24px
       font-size: 24px;
+      // 行高为32px
       line-height: 32px;
     }
+
+    /**
+     * 子总数样式
+     */
     .subTotal {
+      // 右边距为0
       margin-right: 0;
+      // 颜色为次要文本颜色
       color: @text-color-secondary;
+      // 字体大小为大字体
       font-size: @font-size-lg;
+      // 垂直对齐方式为顶部对齐
       vertical-align: top;
+
+      /**
+       * 子总数内部的图标样式
+       */
       .anticon {
+        // 左边距为4px
         margin-left: 4px;
+        // 字体大小为12px
         font-size: 12px;
+        // 缩放比例为0.82
         transform: scale(0.82);
       }
+
+      /**
+       * 全局样式，用于覆盖图标颜色
+       */
       :global {
+        /**
+         * 上升箭头图标颜色
+         */
         .anticon-caret-up {
+          // 颜色为红色
           color: @red-6;
         }
+
+        /**
+         * 下降箭头图标颜色
+         */
         .anticon-caret-down {
+          // 颜色为绿色
           color: @green-6;
         }
       }
     }
   }
 }
+
+/**
+ * 浅色主题的数字信息组件样式
+ */
 .numberInfolight {
+  /**
+   * 数字信息值样式
+   */
   .numberInfoValue {
+    /**
+     * 数字信息值内部的 span 样式
+     */
     & > span {
+      // 颜色为文本颜色
       color: @text-color;
     }
   }

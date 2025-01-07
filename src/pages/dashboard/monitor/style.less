@@ -1,21 +1,43 @@
+// 导入 antd 默认主题样式
 @import '~antd/es/style/themes/default.less';
 
+/**
+ * 地图图表样式
+ * 用于设置地图图表的样式
+ */
 .mapChart {
+  // 高度为452px
   height: 452px;
+  // 上内边距为24px
   padding-top: 24px;
+  // 图片样式
   img {
+    // 内联块级显示
     display: inline-block;
+    // 最大宽度为100%
     max-width: 100%;
+    // 最大高度为437px
     max-height: 437px;
   }
 }
 
+/**
+ * 饼图卡片样式
+ * 用于设置饼图卡片的样式
+ */
 .pieCard :global(.pie-stat) {
+  // 字体大小为24px，覆盖其他样式
   font-size: 24px !important;
 }
 
+/**
+ * 媒体查询
+ * 当屏幕宽度小于等于 @screen-lg 时，应用以下样式
+ */
 @media screen and (max-width: @screen-lg) {
+  // 地图图表样式
   .mapChart {
+    // 高度为自动
     height: auto;
   }
 }

@@ -1,30 +1,75 @@
+// 导入 React 和 Component 类
 import React, { Component } from 'react';
+// 导入 autoHeight 高阶组件
 import autoHeight from '../autoHeight';
 
 /* eslint no-return-assign: 0 */
 /* eslint no-mixed-operators: 0 */
 // riddle: https://riddle.alibaba-inc.com/riddles/2d9a4b90
 
+/**
+ * WaterWave 组件的属性类型定义
+ */
 export type WaterWaveProps = {
+  // 标题，可以是 React 节点
   title: React.ReactNode;
+  // 水波颜色，默认为 '#1890FF'
   color?: string;
+  // 组件高度，默认为 1
   height?: number;
+  // 水波百分比，范围是 0 到 100
   percent: number;
+  // 自定义样式
   style?: React.CSSProperties;
 };
+
+/**
+ * WaterWave 组件，用于显示带有水波效果的图表
+ * @class WaterWave
+ * @extends {Component<WaterWaveProps>}
+ */
 class WaterWave extends Component<WaterWaveProps> {
+  /**
+   * 组件状态
+   * @type {Object}
+   * @property {number} radio - 缩放比例
+   */
   state = {
     radio: 1,
   };
+
+  /**
+   * 用于存储定时器 ID 的属性
+   * @type {number}
+   */
   timer: number = 0;
+
+  /**
+   * 用于存储根 DOM 元素的引用
+   * @type {HTMLDivElement | undefined | null}
+   */
   root: HTMLDivElement | undefined | null = null;
+
+  /**
+   * 用于存储画布 DOM 元素的引用
+   * @type {HTMLCanvasElement | undefined | null}
+   */
   node: HTMLCanvasElement | undefined | null = null;
+
+  /**
+   * 组件挂载后调用的生命周期方法
+   * @memberof WaterWave
+   */
   componentDidMount() {
+    // 渲染图表
     this.renderChart();
+    // 调整图表大小
     this.resize();
+    // 监听窗口大小变化事件
     window.addEventListener(
       'resize',
       () => {
+        // 在动画帧中调整图表大小
         requestAnimationFrame(() => this.resize());
       },
       {
@@ -32,32 +77,59 @@ class WaterWave extends Component<WaterWaveProps> {
       },
     );
   }
+
+  /**
+   * 组件更新后调用的生命周期方法
+   * @param {WaterWaveProps} props - 旧的属性
+   * @memberof WaterWave
+   */
   componentDidUpdate(props: WaterWaveProps) {
     const { percent } = this.props;
     if (props.percent !== percent) {
-      // 不加这个会造成绘制缓慢
+      // 如果百分比发生变化，重新渲染图表
       this.renderChart('update');
     }
   }
+
+  /**
+   * 组件卸载前调用的生命周期方法
+   * @memberof WaterWave
+   */
   componentWillUnmount() {
+    // 取消动画帧
     cancelAnimationFrame(this.timer);
     if (this.node) {
+      // 清空画布内容
       this.node.innerHTML = '';
     }
+    // 移除窗口大小变化事件监听器
     window.removeEventListener('resize', this.resize);
   }
+
+  /**
+   * 调整图表大小的方法
+   * @memberof WaterWave
+   */
   resize = () => {
     if (this.root) {
       const { height = 1 } = this.props;
       const { offsetWidth } = this.root.parentNode as HTMLElement;
+      // 计算缩放比例
       this.setState({
         radio: offsetWidth < height ? offsetWidth / height : 1,
       });
     }
   };
+
+  /**
+   * 渲染图表的方法
+   * @param {string} [type] - 渲染类型，可选值为 'update'
+   * @memberof WaterWave
+   */
   renderChart(type?: string) {
     const { percent, color = '#1890FF' } = this.props;
     const data = percent / 100;
+    // 取消动画帧
     cancelAnimationFrame(this.timer);
     if (!this.node || (data !== 0 && !data)) {
       return;
@@ -93,6 +165,11 @@ class WaterWave extends Component<WaterWaveProps> {
     const cStartPoint = arcStack.shift() as number[];
     ctx.strokeStyle = color;
     ctx.moveTo(cStartPoint[0], cStartPoint[1]);
+
+    /**
+     * 绘制正弦波的方法
+     * @memberof WaterWave
+     */
     const drawSin = () => {
       if (!ctx) {
         return;
@@ -119,6 +196,11 @@ class WaterWave extends Component<WaterWaveProps> {
       ctx.fill();
       ctx.restore();
     };
+
+    /**
+     * 渲染循环方法
+     * @memberof WaterWave
+     */
     const render = () => {
       if (!ctx) {
         return;

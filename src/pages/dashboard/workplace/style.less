@@ -1,16 +1,29 @@
+// 导入 antd 默认主题样式
 @import '~antd/es/style/themes/default.less';
 
+/**
+ * 文本溢出处理
+ * 用于处理文本溢出时的显示效果
+ */
 .textOverflow() {
+  // 超出部分隐藏
   overflow: hidden;
+  // 不换行
   white-space: nowrap;
+  // 显示省略号
   text-overflow: ellipsis;
+  // 单词换行
   word-break: break-all;
 }
 
-// mixins for clearfix
-// ------------------------
+/**
+ * 清除浮动
+ * 用于清除浮动元素对布局的影响
+ */
 .clearfix() {
+  // 缩放
   zoom: 1;
+  // 伪元素，清除浮动
   &::before,
   &::after {
     display: table;
@@ -24,81 +37,150 @@
   }
 }
 
+/**
+ * 活动列表样式
+ * 用于设置活动列表的样式
+ */
 .activitiesList {
+  // 内边距
   padding: 0 24px 8px 24px;
 
+  // 用户名样式
   .username {
+    // 文本颜色
     color: @text-color;
   }
+  // 事件样式
   .event {
+    // 字体粗细
     font-weight: normal;
   }
 }
 
+/**
+ * 页面头部内容样式
+ * 用于设置页面头部内容的样式
+ */
 .pageHeaderContent {
+  // 弹性布局
   display: flex;
+  // 头像样式
   .avatar {
+    // 弹性布局，不伸缩，宽度为72px
     flex: 0 1 72px;
+    // 头像内部样式
     & > span {
+      // 块级显示
       display: block;
+      // 宽度为72px
       width: 72px;
+      // 高度为72px
       height: 72px;
+      // 圆角半径为72px
       border-radius: 72px;
     }
   }
+  // 内容样式
   .content {
+    // 相对定位
     position: relative;
+    // 上偏移4px
     top: 4px;
+    // 弹性布局，伸缩，自动宽度
     flex: 1 1 auto;
+    // 左外边距为24px
     margin-left: 24px;
+    // 文本颜色
     color: @text-color-secondary;
+    // 行高为22px
     line-height: 22px;
+    // 内容标题样式
     .contentTitle {
+      // 下外边距为12px
       margin-bottom: 12px;
+      // 文本颜色
       color: @heading-color;
+      // 字体粗细为500
       font-weight: 500;
+      // 字体大小为20px
       font-size: 20px;
+      // 行高为28px
       line-height: 28px;
     }
   }
 }
 
+/**
+ * 额外内容样式
+ * 用于设置额外内容的样式
+ */
 .extraContent {
+  // 清除浮动
   .clearfix();
 
+  // 右浮动
   float: right;
+  // 不换行
   white-space: nowrap;
+  // 统计项样式
   .statItem {
+    // 相对定位
     position: relative;
+    // 内联块级显示
     display: inline-block;
+    // 内边距
     padding: 0 32px;
+    // 第一个段落样式
     > p:first-child {
+      // 下外边距为4px
       margin-bottom: 4px;
+      // 文本颜色
       color: @text-color-secondary;
+      // 字体大小
       font-size: @font-size-base;
+      // 行高为22px
       line-height: 22px;
     }
+    // 段落样式
     > p {
+      // 外边距为0
       margin: 0;
+      // 文本颜色
       color: @heading-color;
+      // 字体大小为30px
       font-size: 30px;
+      // 行高为38px
       line-height: 38px;
+      // 子元素样式
       > span {
+        // 文本颜色
         color: @text-color-secondary;
+        // 字体大小为20px
         font-size: 20px;
       }
     }
+    // 伪元素，添加分割线
     &::after {
+      // 绝对定位
       position: absolute;
+      // 上偏移8px
       top: 8px;
+      // 右对齐
       right: 0;
+      // 宽度为1px
       width: 1px;
+      // 高度为40px
       height: 40px;
-      background-color: @border-color-split;
+      // 背景颜色
+      backgroundColor: @border-color-split;
+      // 内容为空
       content: '';
     }
+    // 最后一个统计项样式
     &:last-child {
+      // 右内边距为0
       padding-right: 0;
+      // 伪元素，隐藏分割线
       &::after {
         display: none;
       }
@@ -106,79 +188,143 @@
   }
 }
 
+/**
+ * 成员样式
+ * 用于设置成员的样式
+ */
 .members {
+  // 链接样式
   a {
+    // 块级显示
     display: block;
+    // 高度为24px
     height: 24px;
+    // 上下外边距为12px，左右外边距为0
     margin: 12px 0;
+    // 文本颜色
     color: @text-color;
+    // 过渡效果
     transition: all 0.3s;
+    // 文本溢出处理
     .textOverflow();
+    // 成员样式
     .member {
+      // 左外边距为12px
       margin-left: 12px;
+      // 字体大小
       font-size: @font-size-base;
+      // 行高为24px
       line-height: 24px;
+      // 垂直对齐
       vertical-align: top;
     }
+    // 鼠标悬停样式
     &:hover {
+      // 文本颜色
       color: @primary-color;
     }
   }
 }
 
+/**
+ * 项目列表样式
+ * 用于设置项目列表的样式
+ */
 .projectList {
+  // 全局样式
   :global {
+    // 卡片元数据描述样式
     .ant-card-meta-description {
+      // 高度为44px
       height: 44px;
+      // 超出部分隐藏
       overflow: hidden;
+      // 文本颜色
       color: @text-color-secondary;
+      // 行高为22px
       line-height: 22px;
     }
   }
+  // 卡片标题样式
   .cardTitle {
+    // 字体大小为0
     font-size: 0;
+    // 链接样式
     a {
+      // 内联块级显示
       display: inline-block;
+      // 高度为24px
       height: 24px;
+      // 左外边距为12px
       margin-left: 12px;
+      // 文本颜色
       color: @heading-color;
+      // 字体大小
       font-size: @font-size-base;
+      // 行高为24px
       line-height: 24px;
+      // 垂直对齐
       vertical-align: top;
+      // 鼠标悬停样式
       &:hover {
+        // 文本颜色
         color: @primary-color;
       }
     }
   }
+  // 项目网格样式
   .projectGrid {
+    // 宽度为33.33%
     width: 33.33%;
   }
+  // 项目项内容样式
   .projectItemContent {
+    // 弹性布局
     display: flex;
+    // 高度为20px
     height: 20px;
+    // 上外边距为8px
     margin-top: 8px;
+    // 超出部分隐藏
     overflow: hidden;
+    // 字体大小为12px
     font-size: 12px;
+    // 行高
     line-height: 20px;
+    // 文本溢出处理
     .textOverflow();
     a {
+      // 内联块级显示
       display: inline-block;
+      // 弹性布局，伸缩，自动宽度
       flex: 1 1 0;
+      // 文本颜色
       color: @text-color-secondary;
+      // 文本溢出处理
       .textOverflow();
+      // 鼠标悬停样式
       &:hover {
+        // 文本颜色
         color: @primary-color;
       }
     }
     .datetime {
+      // 弹性布局，不伸缩，宽度为72px
       flex: 0 0 auto;
+      // 右浮动
       float: right;
+      // 文本颜色
       color: @disabled-color;
     }
   }
 }
 
+/**
+ * 日期时间样式
+ * 用于设置日期时间的样式
+ */
 .datetime {
+  // 文本颜色
   color: @disabled-color;
 }
 

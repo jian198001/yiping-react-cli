@@ -1,8 +1,21 @@
+// 导入 Line 和 Tiny 组件，用于绘制折线图和环形图
 import { Line, Tiny } from '@ant-design/plots';
+// 导入 Card、Col、Row 和 Tabs 组件，用于布局和选项卡切换
 import { Card, Col, Row, Tabs } from 'antd';
+// 导入 type 类型定义，用于定义 DataItem 和 OfflineDataType 类型
 import type { DataItem, OfflineDataType } from '../data.d';
+// 导入 useStyles 自定义钩子，用于获取样式
 import useStyles from '../style.style';
+// 导入 NumberInfo 组件，用于显示数字信息
 import NumberInfo from './NumberInfo';
+
+/**
+ * 自定义选项卡组件，用于显示转化率信息
+ * @param {Object} props - 组件属性
+ * @param {OfflineDataType} props.data - 离线数据类型
+ * @param {string} props.currentTabKey - 当前选项卡的键
+ * @returns {JSX.Element} - 渲染的选项卡组件
+ */
 const CustomTab = ({
   data,
   currentTabKey: currentKey,
@@ -37,6 +50,16 @@ const CustomTab = ({
   </Row>
 );
 
+/**
+ * 离线数据组件，用于显示离线数据的图表和选项卡
+ * @param {Object} props - 组件属性
+ * @param {string} props.activeKey - 当前激活的选项卡键
+ * @param {boolean} props.loading - 是否正在加载数据
+ * @param {OfflineDataType[]} props.offlineData - 离线数据数组
+ * @param {DataItem[]} props.offlineChartData - 离线图表数据数组
+ * @param {(activeKey: string) => void} props.handleTabChange - 选项卡切换时的回调函数
+ * @returns {JSX.Element} - 渲染的离线数据组件
+ */
 const OfflineData = ({
   activeKey,
   loading,
@@ -50,6 +73,7 @@ const OfflineData = ({
   offlineChartData: DataItem[];
   handleTabChange: (activeKey: string) => void;
 }) => {
+  // 使用 useStyles 自定义钩子获取样式
   const { styles } = useStyles();
   return (
     <Card
@@ -96,4 +120,6 @@ const OfflineData = ({
     </Card>
   );
 };
+
+// 导出 OfflineData 组件
 export default OfflineData;

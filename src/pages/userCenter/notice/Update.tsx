@@ -40,6 +40,8 @@ export default (props: any, ref: any) => {
     if (id) {
       const data: any = await getById?.(id);
 
+      console.log(data);
+
       // 如果数据存在，设置表单字段值
       if (data?.data) {
         return formRef?.current?.setFieldsValue?.({

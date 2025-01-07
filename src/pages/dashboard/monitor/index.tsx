@@ -1,20 +1,39 @@
+// 导入 Gauge、Liquid、WordCloud 组件，用于绘制仪表盘、液态图和词云图
 import { Gauge, Liquid, WordCloud } from '@ant-design/plots';
+// 导入 GridContent 组件，用于布局页面
 import { GridContent } from '@ant-design/pro-components';
+// 导入 useRequest 组件，用于处理请求
 import { useRequest } from '@umijs/max';
+// 导入 Card、Col、Progress、Row、Statistic 组件，用于布局和展示数据
 import { Card, Col, Progress, Row, Statistic } from 'antd';
+// 导入 numeral 库，用于格式化数字
 import numeral from 'numeral';
+// 导入 FC 类型，用于定义函数式组件
 import type { FC } from 'react';
+// 导入 ActiveChart 组件，用于展示活动图表
 import ActiveChart from './components/ActiveChart';
+// 导入 Map 组件，用于展示地图
 import Map from './components/Map';
+// 导入 queryTags 函数，用于查询标签数据
 import { queryTags } from './service';
+// 导入 useStyles 钩子，用于获取样式
 import useStyles from './style.style';
 
+// 从 Statistic 组件中解构出 Countdown 组件
 const { Countdown } = Statistic;
+// 设置倒计时的截止时间
 const deadline = Date.now() + 1000 * 60 * 60 * 24 * 2 + 1000 * 30; // Moment is also OK
 
+/**
+ * Monitor 组件
+ * @returns {JSX.Element} 监控页面的 JSX 元素
+ */
 const Monitor: FC = () => {
+  // 使用 useStyles 钩子获取样式
   const { styles } = useStyles();
+  // 使用 useRequest 钩子获取标签数据
   const { loading, data } = useRequest(queryTags);
+  // 将标签数据转换为词云图所需的数据格式
   const wordCloudData = (data?.list || []).map((item) => {
     return {
       id: +Date.now(),
@@ -22,6 +41,7 @@ const Monitor: FC = () => {
       weight: item.value,
     };
   });
+  // 返回监控页面的 JSX 元素
   return (
     <GridContent>
       <>

@@ -1,15 +1,35 @@
+// 导入 Ant Design 的默认主题样式
 @import '~antd/es/style/themes/default.less';
 
+/**
+ * 链接组样式
+ */
 .linkGroup {
+  // 内边距：上 20px，右 0，下 8px，左 24px
   padding: 20px 0 8px 24px;
+  // 字体大小设置为 0，用于去除默认的行内元素间距
   font-size: 0;
+
+  /**
+   * 链接样式
+   */
   & > a {
+    // 内联块级显示
     display: inline-block;
+    // 宽度占父容器的 25%
     width: 25%;
+    // 下外边距为 13px
     margin-bottom: 13px;
+    // 文本颜色
     color: @text-color;
+    // 字体大小
     font-size: @font-size-base;
+
+    /**
+     * 鼠标悬停时的链接样式
+     */
     &:hover {
+      // 颜色为主色
       color: @primary-color;
     }
   }
