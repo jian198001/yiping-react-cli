@@ -15,4 +15,5 @@
 
 #### 作者
 
-![作者微信: jian198001](https://zero9.work/static/media/img/q.jpg =546*745)
+<img src="https://zero9.work/static/media/img/q.jpg" width="256" />
+
