@@ -116,7 +116,7 @@ export const errorConfig: RequestConfig = {
 
       config.params.sortName = " orderNum ";
 
-      config.params.sortOrder = " ASC ";
+      config.params.sortOrder = " DESC ";
 
       if (config?.params?.sort) {
         const key = Object?.keys?.(config?.params?.sort)?.[0];
