@@ -78,13 +78,13 @@ export default () => {
       render: (_, record) => [
         <Update
           key={record.id}
-          trigger={<Button type='primary' disabled={true}>
+          trigger={<Button type='primary'>
             编 辑
           </Button>}
           id={record?.id}
           onOk={actionRef?.current?.reload}
         ></Update>,
-        <Button disabled={true} danger onClick={() => {
+        <Button danger onClick={() => {
           handleRemove(selectedRowsState);
         }}>
           删 除
@@ -151,7 +151,7 @@ export default () => {
         // 自定义工具栏渲染函数，返回一个包含新建按钮的数组
         toolBarRender={() => [<>
           <Update
-            trigger={<Button type="primary" disabled={true}>
+            trigger={<Button type="primary">
               新 建
             </Button>}
             id={uid}
