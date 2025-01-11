@@ -31,6 +31,8 @@ export default (props: any, ref: any) => {
   // 定义 loading 状态
   const [loading, setLoading] = useState(false);
 
+  const [messageApi, contextHolder] = message.useMessage();
+
   /**
    * 模态框打开或关闭时的回调函数
    * @async
@@ -77,46 +79,63 @@ export default (props: any, ref: any) => {
       id: id,
     };
 
-    const res = await update?.(values);
+    console.log("test");
+
+    let res;
+
+    try {
+      res = await update?.(values);
+    } catch (error) {
+      console.log(error);
+    }
+
+    console.log(JSON.stringify(res));
+    
+
+    console.log(res);
 
     // 检查更新结果
     if (res?.code !== 0) {
       // 显示错误消息
-      message?.error?.(res?.message);
+     // messageApi?.error?.(res?.message);
 
       setLoading?.(false);
 
       // 返回 false，表示提交失败
       return false;
+    } else {
+      // 显示成功消息
+      messageApi?.success?.("提交成功");
+  
+      onOk?.();
+  
+      setLoading?.(false);
+  
+      return true;
     }
 
-    // 显示成功消息
-    message?.success?.("提交成功");
-
-    onOk?.();
-
-    setLoading?.(false);
-
-    return true;
   };
 
   // 返回一个 ModalForm 组件
   return (
-    <ModalForm
-      formRef={formRef}
-      onFinish={onFinish}
-      modalProps={{
-        // 关闭时销毁模态框
-        destroyOnClose: true,
-        // 设置确认按钮的 loading 状态
-        okButtonProps: { loading },
-      }}
-      onOpenChange={onOpenChange}
-      initialValues={initialValues}
-      title="编辑信息"
-      trigger={trigger}
-    >
-      <BetaSchemaForm layoutType="Embed" columns={formItems} />
-    </ModalForm>
+    <>
+      {contextHolder}
+      <ModalForm
+        formRef={formRef}
+        onFinish={onFinish}
+        modalProps={{
+          // 关闭时销毁模态框
+          destroyOnClose: true,
+          // 设置确认按钮的 loading 状态
+          okButtonProps: { loading },
+        }}
+        onOpenChange={onOpenChange}
+        initialValues={initialValues}
+        title="编辑信息"
+        trigger={trigger}
+      >
+        <BetaSchemaForm layoutType="Embed" columns={formItems} />
+      </ModalForm>
+    </>
   );
 };
