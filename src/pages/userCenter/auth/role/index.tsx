@@ -78,7 +78,7 @@ export default () => {
       render: (_, record) => [
         <Update
           key={record.id}
-          trigger={<Button type='primary'>
+          trigger={<Button type='primary' disabled={record?.name === '系统管理员' } >
             编 辑
           </Button>}
           id={record?.id}
@@ -86,7 +86,7 @@ export default () => {
         ></Update>,
         <Button danger onClick={() => {
           handleRemove(selectedRowsState);
-        }}>
+        }}  disabled={record?.name === '系统管理员' } >
           删 除
         </Button>,
       ],

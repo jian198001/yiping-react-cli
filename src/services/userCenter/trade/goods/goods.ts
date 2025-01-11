@@ -11,7 +11,7 @@ import { request } from '@umijs/max';
  */
 export async function page(params: any, sort: any, filter: any) {
   // 定义请求的URL
-  const url = '/staff/web/userCenter/trade/goods/goods/page.json';
+  const url = '/staff/web/userCenter/goods/goods/page.json';
 
   // 发送GET请求获取商品列表
   return request?.(url, {
@@ -31,7 +31,7 @@ export async function page(params: any, sort: any, filter: any) {
  */
 export async function update(data: any) {
   // 定义请求的URL
-  const url = '/staff/web/userCenter/trade/goods/goods/update.json';
+  const url = '/staff/web/userCenter/goods/goods/update.json';
 
   // 发送POST请求更新商品信息
   return request?.(url, {
@@ -47,7 +47,7 @@ export async function update(data: any) {
  */
 export async function getById(id: string) {
   // 定义请求的URL
-  const url = '/staff/web/userCenter/trade/goods/goods/getById.json';
+  const url = '/staff/web/userCenter/goods/goods/getById.json';
 
   // 发送GET请求获取商品详情
   return request?.(url, {
@@ -66,7 +66,7 @@ export async function getById(id: string) {
  */
 export async function del(options?: { [key: string]: any }) {
   // 定义请求的URL
-  const url = '/staff/web/userCenter/trade/goods/goods/del.json';
+  const url = '/staff/web/userCenter/goods/goods/del.json';
 
   // 发送POST请求删除商品
   return request?.(url, {

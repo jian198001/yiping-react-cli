@@ -33,6 +33,9 @@ export default (props: any) => {
   // 创建一个 ProFormInstance 的引用
   const formRef = useRef<ProFormInstance>?.()
 
+  // 定义 loading 状态
+  const [loading, setLoading] = useState(false);
+
   /**
    * 模态框打开或关闭时的回调函数
    * @async
@@ -73,27 +76,6 @@ export default (props: any) => {
 
   // 从 props 中解构 id、trigger、onOk
   const { id, trigger, onOk } = props
-
-  /**
-   * 使用 useRequest 钩子来处理请求
-   * @param {Function} update - 更新数据的函数
-   * @param {Object} config - 请求配置
-   * @param {boolean} config.manual - 是否手动触发请求
-   * @param {Function} config.onSuccess - 请求成功的回调函数
-   * @param {Function} config.onError - 请求失败的回调函数
-   */
-  const { run, loading } = useRequest?.(update, {
-    manual: true,
-    onSuccess: () => {
-      // 请求成功时显示成功消息并调用 onOk 函数
-      message?.success?.("提交成功")
-      onOk?.()
-    },
-    onError: () => {
-      // 请求失败时显示错误消息
-      message?.error?.("提交失败, 请重试!")
-    },
-  })
 
   // 定义表单配置
   let formItems = [
@@ -190,7 +172,7 @@ export default (props: any) => {
    * @returns {Promise<boolean>}
    */
   const onFinish = async (values: Record<string, any>) => {
-    // 将 id 添加到 values 中
+ setLoading(true,)    // 将 id 添加到 values 中
     values = {
       ...values,
       id: id,

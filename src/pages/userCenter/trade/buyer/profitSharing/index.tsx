@@ -18,6 +18,9 @@ import { formItems,} from './FormText';
 // 导入工具函数
 import { getColumns,} from '@/utils';
 
+// 导入生成唯一ID的函数
+import {uuid} from '@/utils'
+
 /**
  * 页面组件
  * @returns {JSX.Element} - 返回页面组件

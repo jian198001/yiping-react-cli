@@ -131,7 +131,7 @@ export default (props: any) => {
     }
 
     // 调用 updatePwd 函数更新密码
-    const res = await updatePwd(values)
+    const res = await updatePwd?.(values, )
 
     // 检查更新结果
     if (res?.code !== 0) {

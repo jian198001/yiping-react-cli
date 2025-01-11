@@ -54,28 +54,6 @@ let formItems = [
          */
         width: 'm',
       },
-      {
-        /**
-         * 字段标题为 "创建时间"
-         */
-        title: '创建时间',
-        /**
-         * 数据索引为 createDate
-         */
-        dataIndex: 'createDate',
-        /**
-         * 开启排序功能
-         */
-        sorter: true,
-        /**
-         * 在表单中隐藏该字段
-         */
-        hideInForm: true,
-        /**
-         * 字段值类型为 datetime
-         */
-        valueType: 'datetime',
-      },
     ],
   },
 ];

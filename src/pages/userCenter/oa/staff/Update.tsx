@@ -6,10 +6,9 @@ import {
 
 import { message } from "antd";
 
-import { useRequest } from "@umijs/max";
 import { update, getById } from "@/services/userCenter/oa/staff";
 
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 import { formItems } from './FormText';
 
@@ -24,6 +23,9 @@ import { formItems } from './FormText';
 export default (props: any) => {
   // 使用 useRef 创建一个 ProFormInstance 的引用
   const formRef = useRef<ProFormInstance>();
+
+  // 定义 loading 状态
+  const [loading, setLoading] = useState(false);
 
   /**
    * 模态框打开或关闭时的回调函数
@@ -55,24 +57,7 @@ export default (props: any) => {
 
   // 从 props 中解构 id、trigger、onOk
   const { id, trigger, onOk } = props;
-
-  /**
-   * 使用 useRequest 钩子来处理请求
-   * @param {Function} update - 更新数据的函数
-   * @param {Object} config - 请求配置
-   * @param {boolean} config.manual - 是否手动触发请求
-   * @param {Function} config.onSuccess - 请求成功的回调函数
-   * @param {Function} config.onError - 请求失败的回调函数
-   */
-  const { run, loading } = useRequest(update, {
-    manual: true,
-    onSuccess: () => {
-      // 请求成功时显示成功消息并调用 onOk 函数
-      message.success("提交成功");
-      onOk();
-    },
-  });
-
+ 
   /**
    * 表单提交时的回调函数
    * @async
@@ -80,14 +65,36 @@ export default (props: any) => {
    * @returns {Promise<boolean>}
    */
   const onFinish = async (values: Record<string, any>) => {
-    // 将 id 添加到 values 中
+ setLoading(true,)    // 将 id 添加到 values 中
     values = {
       ...values,
       id: id,
     };
 
-    // 调用 run 函数提交表单
-    run(values);
+    const res = await update?.(values, )
+
+    // 检查更新结果
+    if (res?.code !== 0) {
+
+      // 显示错误消息
+      message?.error?.(res?.message)
+
+setLoading(false, )
+
+      // 返回 false，表示提交失败
+      return false
+
+    }
+
+    // 显示成功消息
+    message?.success?.("提交成功")
+
+    onOk?.()
+
+setLoading(false, )
+
+
+
     return true;
   };
 
