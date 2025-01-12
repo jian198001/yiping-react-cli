@@ -114,6 +114,10 @@ export const errorConfig: RequestConfig = {
         config.params.pageNum = config?.params?.current;
       }
 
+      if (config?.params?.params?.current) {
+        config.params.pageNum = config?.params?.params?.current;
+      }
+
       config.params.sortName = " orderNum ";
 
       config.params.sortOrder = " DESC ";

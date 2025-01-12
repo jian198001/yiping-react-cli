@@ -8,7 +8,7 @@ import {
 import { message } from "antd";
 
 // 导入 userCenter/notice 模块的 update 和 getById 函数
-import { update, getById } from "@/services/userCenter/notice";
+import { update, getById } from "@/services/userCenter/tag";
 
 // 导入 React 的 useRef 钩子
 import { useRef, useState } from "react";
