@@ -3,3 +3,9 @@ node_modules/
 
 # 忽略 .DS_Store 文件，这是 Mac OS 系统自动生成的文件，不需要被版本控制
 .DS_Store
+
+.umi
+
+dist
+# 忽略 .env 文件，因为它通常包含敏感信息，不需要被版本控制
+.env

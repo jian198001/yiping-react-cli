@@ -211,7 +211,6 @@ export default () => {
 
   const isAdmin = () => {
     if (currentUser?.roleIds?.includes("1")) {
-      console.log("isAdmin");
 
       return true;
     }
@@ -224,9 +223,7 @@ export default () => {
 
     (async () => {
       const { data } = await arr();
-
-      console.log(data);
-
+ 
       setRoles(data);
     })();
   }, []);

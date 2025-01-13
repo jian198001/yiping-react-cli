@@ -162,6 +162,7 @@ let formItems = [
          * 设置值枚举
          */
         valueEnum: {},
+        width: "sm",
       },
     ],
   },

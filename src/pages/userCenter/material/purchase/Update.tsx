@@ -18,12 +18,12 @@ import { formItems } from "./FormText";
 import UpdateItem from "./UpdateItem";
 
 import { uuid } from "@/utils";
- 
+
 export default (props: any) => {
   const formRef = useRef<ProFormInstance>?.();
 
   // 定义 loading 状态
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState?.(false);
 
   const actionRef = useRef<ActionType>?.();
 
@@ -86,7 +86,8 @@ export default (props: any) => {
     return true;
   };
 
-  const handleRemove =  async (selectedRows: any[]) => {  // 异步函数，用于处理删除操作
+  const handleRemove = async (selectedRows: any[]) => {
+    // 异步函数，用于处理删除操作
     // 弹出确认对话框，确认是否删除选中的行
     Modal?.confirm?.({
       title: "操作提示",
@@ -96,21 +97,19 @@ export default (props: any) => {
         // 确认操作的回调函数
         // 异步调用 del 函数，传入选中行的 id 数组
         (async () => {
-            // 利用 await 调用 del 函数，并拿到响应结果
-            const res = await del?.(
-              selectedRows?.map?.((row) => row?.id)
-            );
-            if (res?.code !== 0) {
-              // 如果响应结果的 code 不为 0，则显示错误信息
-              return messageApi?.error?.(res?.message || "删除操作失败,请重试");
-            } else {
-              setSelectedRows?.([]);
-              actionRef?.current?.reload?.();
-              // 如果 code 为 0，则显示成功信息，并重置表单已选中项
-              messageApi?.success?.(res?.message || "删除操作成功"); 
-            } 
-      })()
-    }
+          // 利用 await 调用 del 函数，并拿到响应结果
+          const res = await del?.(selectedRows?.map?.((row) => row?.id));
+          if (res?.code !== 0) {
+            // 如果响应结果的 code 不为 0，则显示错误信息
+            return messageApi?.error?.(res?.message || "删除操作失败,请重试");
+          } else {
+            setSelectedRows?.([]);
+            actionRef?.current?.reload?.();
+            // 如果 code 为 0，则显示成功信息，并重置表单已选中项
+            messageApi?.success?.(res?.message || "删除操作成功");
+          }
+        })();
+      },
     });
   };
 

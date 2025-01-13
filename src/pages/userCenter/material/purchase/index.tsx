@@ -171,9 +171,7 @@ export default () => {
   }
 
   const onOk = () => { // 新增或编辑表单提交后,刷新分页列表
-
-    console.log('onOk');
-
+ 
     actionRef?.current?.reload()
 
     setUid?.(uuid?.())
