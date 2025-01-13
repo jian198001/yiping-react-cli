@@ -79,20 +79,8 @@ export default (props: any, ref: any) => {
       id: id,
     };
 
-    console.log("test");
-
-    let res;
-
-    try {
-      res = await update?.(values);
-    } catch (error) {
-      console.log(error);
-    }
-
-    console.log(JSON.stringify(res));
-    
-
-    console.log(res);
+    // 调用 update 函数更新数据
+    const res = await update?.(values);
 
     // 检查更新结果
     if (res?.code !== 0) {

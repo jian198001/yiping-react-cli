@@ -4,16 +4,18 @@ import {
   ModalForm,
 } from "@ant-design/pro-components";
 import { message } from "antd";
-
-import { useRequest } from "@umijs/max";
+ 
 import { getById, update } from "@/services/userCenter/material/purchase";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 import { formItemsItem } from "./FormText";
 
 export default (props: any) => {
   const formRef = useRef<ProFormInstance>?.();
+
+  // 定义 loading 状态
+  const [loading, setLoading] = useState(false);
 
   const onOpenChange = async () => {
     if (id) {
@@ -36,24 +38,32 @@ export default (props: any) => {
 
   const { id, trigger, onOk } = props;
 
-  const { run, loading } = useRequest?.(update, {
-    manual: true,
-    onSuccess: () => {
-      message?.success?.("提交成功");
-      onOk?.();
-    },
-    onError: () => {
-      message?.error?.("提交失败, 请重试!");
-    },
-  });
-
   const onFinish = async (values: Record<string, any>) => {
     values = {
       ...values,
       id: id,
     };
 
-    run?.(values);
+    const res = await update?.(values);
+
+    // 检查更新结果
+    if (res?.code !== 0) {
+      // 显示错误消息
+      message?.error?.(res?.message);
+
+      setLoading(false);
+
+      // 返回 false，表示提交失败
+      return false;
+    }
+
+    // 显示成功消息
+    message?.success?.("提交成功");
+
+    onOk?.();
+
+    setLoading(false);
+
     return true;
   };
 

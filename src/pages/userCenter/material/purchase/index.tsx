@@ -5,10 +5,10 @@ import type { ActionType, ProColumns, } from '@ant-design/pro-components';
 import {
   PageContainer,
   ProTable,
-} from '@ant-design/pro-components';
-import { FormattedMessage, useIntl, useModel, useRequest } from '@umijs/max';
+} from '@ant-design/pro-components'; 
+import { FormattedMessage, Helmet, SelectLang, useIntl, useModel } from '@umijs/max';
 import { Button, message, Modal } from 'antd';
-import { SetStateAction, useCallback, useEffect, useRef, useState } from 'react';
+import { SetStateAction, useEffect, useRef, useState } from 'react';
 import { uuid } from '@/utils'
 export default () => {
 
@@ -34,20 +34,6 @@ export default () => {
   const intl = useIntl?.();
 
   const [messageApi, contextHolder] = message?.useMessage?.();
-
-  const { run: delRun, loading } = useRequest?.(del, {
-    manual: true,
-    onSuccess: () => {
-      
-      setSelectedRows?.([]);
-      actionRef?.current?.reload?.();
-
-      messageApi?.success?.('删除操作成功');
-    },
-    onError: () => {
-      messageApi?.error?.('删除操作失败,请重试');
-    },
-  });
 
   const columns: ProColumns<never, "text">[] = [{
     title: '标 题',
@@ -118,24 +104,35 @@ export default () => {
    *
    * @param selectedRows
    */
-  const handleRemove = useCallback(
-    async (item: any) => {
+  const handleRemove =  async (selectedRows: any[]) => {  // 异步函数，用于处理删除操作
+    // 弹出确认对话框，确认是否删除选中的行
+    Modal?.confirm?.({
+      title: "操作提示",
+      content:
+        "是否确定删除这" + selectedRows?.length + "项信息?删除后将不可恢复",
+      onOk() {
+        // 确认操作的回调函数
+        // 异步调用 del 函数，传入选中行的 id 数组
+        (async () => {
+            // 利用 await 调用 del 函数，并拿到响应结果
+            const res = await del?.(
+              selectedRows?.map?.((row) => row?.id)
+            );
+            if (res?.code !== 0) {
+              // 如果响应结果的 code 不为 0，则显示错误信息
+              return messageApi?.error?.(res?.message || "删除操作失败,请重试");
+            } else {
+              setSelectedRows?.([]);
+              actionRef?.current?.reload?.();
+              // 如果 code 为 0，则显示成功信息，并重置表单已选中项
+              messageApi?.success?.(res?.message || "删除操作成功"); 
+            } 
+      })()
+    }
+    });
+  };
 
-      Modal?.confirm?.({
-        title: '操作提示', content: `是否确定删除标题为${item.title}的信息?删除后将不可恢复`, onOk() {
-          // 确认操作的回调函数
-
-          (async () => {
-            await delRun?.([item?.id])
-          })?.()
-
-        },
-      })
-    },
-    [delRun],
-  );
-
-  const handleSubmit = useCallback(
+  const handleSubmit = 
     async (item: any) => {
 
       Modal?.confirm?.({
@@ -144,17 +141,22 @@ export default () => {
 
           (async () => {
 
-            await submit?.(item?.id,)
+            const res = await submit?.(item?.id,)
 
-            actionRef?.current?.reload()
-
+            if (res?.code !== 0) {
+              // 如果响应结果的 code 不为 0，则显示错误信息
+              return messageApi?.error?.(res?.message || "提交操作失败,请重试");
+            } else {
+              setSelectedRows?.([]);
+              actionRef?.current?.reload?.();
+              // 如果 code 为 0，则显示成功信息，并重置表单已选中项
+              messageApi?.success?.(res?.message || "提交操作成功"); 
+            } 
           })?.()
 
         },
       })
-    },
-    [delRun],
-  );
+    }
 
   const isAdmin=()=>{
  

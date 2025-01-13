@@ -5,8 +5,7 @@ import {
   ProColumns,
   EditableProTable,
 } from '@ant-design/pro-components';
-import { Button, message } from 'antd';
-import {  FormattedMessage, useRequest } from '@umijs/max';
+import { Button, message } from 'antd'; 
 import { getById, update } from '@/services/userCenter/material/purchase';
 import { useRef, useState } from 'react';
 import {  formItemsItem,} from './FormText';
@@ -24,6 +23,10 @@ import { getColumns, } from '@/utils';
 export default (props: any,) => {
   // 创建一个 ProFormInstance 的引用
   const formRef = useRef<ProFormInstance>?.();
+
+  // 定义 loading 状态
+  const [loading, setLoading] = useState(false);
+
   // 创建一个 dataSource 状态，用于存储表格数据
   const [dataSource, setDataSource] = useState([])
 
@@ -66,26 +69,6 @@ export default (props: any,) => {
   const { id, trigger, onOk, checks, } = props;
 
   /**
-   * 使用 useRequest 钩子来处理请求
-   * @param {Function} update - 更新数据的函数
-   * @param {Object} config - 请求配置
-   * @param {boolean} config.manual - 是否手动触发请求
-   * @param {Function} config.onSuccess - 请求成功的回调函数
-   * @param {Function} config.onError - 请求失败的回调函数
-   */
-  const { run, loading } = useRequest?.(update, {
-    manual: true,
-    onSuccess: () => {
-      // 请求成功时显示成功消息并调用 onOk 函数
-      message?.success?.('提交成功');
-      onOk?.();
-    }, onError: () => {
-      // 请求失败时显示错误消息
-      message?.error?.('提交失败, 请重试!');
-    },
-  });
-
-  /**
    * 表单提交时的回调函数
    * @async
    * @param {Record<string, any>} values - 表单提交的值
@@ -97,9 +80,26 @@ export default (props: any,) => {
       ...values,
       id: id,
     }
-    // 调用 run 函数提交表单
-    run?.(values);
-    // 返回 true 表示提交成功
+    const res = await update?.(values);
+
+    // 检查更新结果
+    if (res?.code !== 0) {
+      // 显示错误消息
+      message?.error?.(res?.message);
+
+      setLoading(false);
+
+      // 返回 false，表示提交失败
+      return false;
+    }
+
+    // 显示成功消息
+    message?.success?.("提交成功");
+
+    onOk?.();
+
+    setLoading(false);
+
     return true;
   }
 

@@ -1,6 +1,8 @@
 /**
  * 定义 formItems 数组，用于配置表单字段
  */
+export { formItems, }
+
 let formItems = [
     {
         /**
@@ -193,3 +195,4 @@ let formItems = [
             readonly: true,
         },],
     },]
+ 

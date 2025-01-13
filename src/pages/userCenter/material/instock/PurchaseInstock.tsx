@@ -9,8 +9,7 @@ import {
   EditableProTable, 
 } from '@ant-design/pro-components';
 import { Button, message } from 'antd';
-
-import { FormattedMessage, useRequest } from '@umijs/max';
+ 
 import { getById, update, pageItem, purchaseInstock, } from '@/services/userCenter/material/purchase'; 
 
 import { useRef, } from 'react';
@@ -36,19 +35,6 @@ export default (props: any,) => {
   };
 
   const { id, trigger, onOk, } = props;
-
-  const { run, loading } = useRequest?.(purchaseInstock, {
-    manual: true,
-    onSuccess: () => {
-      message?.success?.('提交成功');
-
-      console.log('instock onok');
-
-      onOk?.();
-    }, onError: () => {
-      message?.error?.('提交失败, 请重试!');
-    },
-  });
 
   const onFinish = async (values: Record<string, any>) => {
  

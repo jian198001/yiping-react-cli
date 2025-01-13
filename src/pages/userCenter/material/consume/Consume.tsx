@@ -6,8 +6,7 @@ import {
 } from '@ant-design/pro-components';
 // 从 antd 库中导入 message 组件
 import { message } from 'antd';
-// 从 @umijs/max 库中导入 useRequest 钩子
-import {  useRequest } from '@umijs/max';
+
 // 从 @/services/userCenter/material/stock 模块中导入 getById 函数
 import { getById,  } from '@/services/userCenter/material/stock';
 // 从 @/services/userCenter/material/consume 模块中导入 consumeOutstock 函数
@@ -68,26 +67,6 @@ export default (props: any,) => {
 
   // 从 props 中解构 record、trigger、onOk
   const { record, trigger, onOk, } = props;
-
-  /**
-   * 使用 useRequest 钩子来处理领用出库请求
-   * @param {Function} consumeOutstock - 领用出库的函数
-   * @param {Object} config - 请求配置
-   * @param {boolean} config.manual - 是否手动触发请求
-   * @param {Function} config.onSuccess - 请求成功的回调函数
-   * @param {Function} config.onError - 请求失败的回调函数
-   */
-  const { run, loading } = useRequest?.(consumeOutstock, {
-    manual: true,
-    onSuccess: () => {
-      // 请求成功时显示成功消息并调用 onOk 函数
-      message?.success?.('提交成功');
-      onOk?.();
-    }, onError: () => {
-      // 请求失败时显示错误消息
-      message?.error?.('提交失败, 请重试!');
-    },
-  });
 
   /**
    * 表单提交时的回调函数

@@ -8,8 +8,6 @@ import {
 // 从 antd 库中导入 message 组件
 import { message, } from "antd";
 
-// 从 @umijs/max 库中导入 useRequest 钩子
-import { useRequest, } from "@umijs/max";
 // 从 @/services/userCenter/auth/user 模块中导入 update 和 getById 函数
 import { update, getById, } from "@/services/userCenter/auth/user";
 

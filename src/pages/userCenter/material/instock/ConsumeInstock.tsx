@@ -8,7 +8,6 @@ import {
 } from '@ant-design/pro-components';
 import { message, } from 'antd';
 
-import { useRequest, } from '@umijs/max';
 import { consumeInstock, } from '@/services/userCenter/material/instock';
 import { getById,  } from '@/services/userCenter/material/consume';
 
@@ -49,16 +48,6 @@ export default (props: any,) => {
   };
 
   const { record, trigger, onOk, } = props;
-
-  const { run, loading } = useRequest?.(consumeInstock, {
-    manual: true,
-    onSuccess: () => {
-      message?.success?.('提交成功');
-      onOk?.();
-    }, onError: () => {
-      message?.error?.('提交失败, 请重试!');
-    },
-  });
 
   const onFinish = async (values: Record<string, any>) => {
 

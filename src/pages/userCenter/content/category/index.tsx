@@ -5,29 +5,26 @@ import { page, del } from "@/services/userCenter/content/category";
 // 导入 ProComponents 库中的类型
 import type { ActionType, ProColumns } from "@ant-design/pro-components";
 // 导入 ProComponents 库中的组件
-import { 
-  PageContainer,
-  ProTable,
-} from "@ant-design/pro-components";
-// 导入 UmiJS 中的组件和钩子
-import {  FormattedMessage, useIntl, useRequest } from "@umijs/max";
+import { PageContainer, ProTable } from "@ant-design/pro-components";
 // 导入 Ant Design 中的组件
 import { Button, message, Modal } from "antd";
 // 导入 React 中的钩子
 import { useCallback, useEffect, useRef, useState } from "react";
 // 导入表单配置
-import { formItems,} from './FormText';
+import { formItems } from "./FormText";
 // 导入工具函数
-import { getColumns,} from '@/utils';
+import { getColumns } from "@/utils";
 // 导入生成唯一ID的函数
-import {uuid} from '@/utils'
+import { uuid } from "@/utils";
+// 导入 UmiJS 中的组件和钩子
+import { FormattedMessage, useIntl } from "@umijs/max";
 /**
  * 页面组件
  * @returns {JSX.Element} - 返回页面组件
  */
 export default () => {
   // 创建一个 uid 状态，用于存储唯一ID
-  const [uid, setUid] = useState('')
+  const [uid, setUid] = useState("");
   // 创建一个 ProTable 的 actionRef 引用
   const actionRef = useRef<ActionType>?.();
   // 创建一个 selectedRowsState 状态，用于存储选中的行
@@ -39,39 +36,29 @@ export default () => {
   const intl = useIntl?.();
   // 创建一个 messageApi 和 contextHolder，用于显示消息
   const [messageApi, contextHolder] = message?.useMessage?.();
-  /**
-   * 使用 useRequest 钩子来处理删除请求
-   * @param {Function} del - 删除数据的函数
-   * @param {Object} config - 请求配置
-   * @param {boolean} config.manual - 是否手动触发请求
-   * @param {Function} config.onSuccess - 请求成功的回调函数
-   * @param {Function} config.onError - 请求失败的回调函数
-   */
-  const { run: delRun, loading } = useRequest?.(del, {
-    manual: true,
-    onSuccess: () => {
-      // 请求成功时，清空选中行，刷新表格，显示成功消息
-      setSelectedRows?.([]);
-      actionRef?.current?.reload?.();
-      messageApi?.success?.('删除操作成功');
-    },
-    onError: () => {
-      // 请求失败时，显示错误消息
-      messageApi?.error?.('删除操作失败,请重试');
-    },
-  });
+
   // 定义表格列配置
-  const columns: ProColumns<never, "text">[] = [ ...getColumns?.(formItems), 
+  const columns: ProColumns<never, "text">[] = [
+    ...getColumns?.(formItems),
     {
       // 标题为 "Operating"
-      title: <FormattedMessage id="pages.searchTable.titleOption" defaultMessage="Operating" />,
+      title: (
+        <FormattedMessage
+          id="pages.searchTable.titleOption"
+          defaultMessage="Operating"
+        />
+      ),
       // 数据索引为 option
-      dataIndex: 'option',
+      dataIndex: "option",
       // 值类型为 option
-      valueType: 'option',
+      valueType: "option",
       // 渲染函数，返回一个编辑按钮，点击按钮弹出相应模态框
       render: (_, record) => [
-        <Update  trigger={<a>编 辑</a>} id={record?.id}  onOk={actionRef?.current?.reload}></Update> 
+        <Update
+          trigger={<a>编 辑</a>}
+          id={record?.id}
+          onOk={actionRef?.current?.reload}
+        ></Update>,
       ],
     },
   ];
@@ -81,46 +68,52 @@ export default () => {
    *
    * @param selectedRows
    */
-  const handleRemove = useCallback(
-    // 异步函数，用于处理删除操作
+  const handleRemove = // 异步函数，用于处理删除操作
     async (selectedRows: any[]) => {
-      // 如果没有选中行，显示警告消息并返回
-      if (!selectedRows?.length) {
-        messageApi.warning('请选择删除项');
-        return;
-      }
       // 弹出确认对话框，确认是否删除选中的行
       Modal?.confirm?.({
-        title: '操作提示', content: '是否确定删除这' + selectedRows?.length + '项信息?删除后将不可恢复', onOk() {
+        title: "操作提示",
+        content:
+          "是否确定删除这" + selectedRows?.length + "项信息?删除后将不可恢复",
+        onOk() {
           // 确认操作的回调函数
-          // 异步调用 delRun 函数，传入选中行的 id 数组
-          (async()=>{
-            await delRun?.(selectedRows?.map?.((row) => row?.id))
-          })?.()
+          // 异步调用 del 函数，传入选中行的 id 数组
+          (async () => {
+            // 利用 await 调用 del 函数，并拿到响应结果
+            const res = await del?.(selectedRows?.map?.((row) => row?.id));
+            if (res?.code !== 0) {
+              // 如果响应结果的 code 不为 0，则显示错误信息
+              return messageApi?.error?.(res?.message || "删除操作失败,请重试");
+            } else {
+              setSelectedRows?.([]);
+              actionRef?.current?.reload?.();
+              // 如果 code 为 0，则显示成功信息，并重置表单已选中项
+              messageApi?.success?.(res?.message || "删除操作成功");
+            }
+          })();
         },
-      })
-    },
-    // delRun 函数作为依赖项，确保每次 delRun 函数变化时，useCallback 都会返回一个新的函数
-    [delRun],
-  );
+      });
+    };
+
   /**
    * 表单提交成功后的回调函数
    * @zh-CN 表单提交成功后的回调函数
    */
-  const onOk = () => { // 新增或编辑表单提交后,刷新分页列表
+  const onOk = () => {
+    // 新增或编辑表单提交后,刷新分页列表
     // 设置 uid 为新的唯一ID
-    setUid?.(uuid?.())
+    setUid?.(uuid?.());
     // 刷新表格
-    actionRef?.current?.reload()
-  }
+    actionRef?.current?.reload();
+  };
   /**
    * 组件挂载后执行的副作用函数
    * @zh-CN 组件挂载后执行的副作用函数
    */
-  useEffect?.(()=>{
+  useEffect?.(() => {
     // 设置 uid 为新的唯一ID
-    setUid?.(uuid?.())
-  },[])
+    setUid?.(uuid?.());
+  }, []);
   // 返回页面组件
   return (
     <PageContainer>
@@ -128,17 +121,33 @@ export default () => {
       <ProTable
         // 设置表格标题
         headerTitle={intl?.formatMessage({
-          id: 'pages.searchTable.title',
-          defaultMessage: '查询表格',
+          id: "pages.searchTable.title",
+          defaultMessage: "查询表格",
         })}
         // 设置 actionRef
         actionRef={actionRef}
         // 设置行键
         rowKey="id"
         // 设置工具栏渲染函数
-        toolBarRender={() => [<> <Button danger  disabled={!selectedRowsState || !selectedRowsState.length} onClick={() => {
-          handleRemove(selectedRowsState);
-        }} >删 除</Button><Update  trigger={<Button type="primary"> 新 建 </Button>}    id={uid}     onOk={onOk}  ></Update></> ]}
+        toolBarRender={() => [
+          <>
+            {" "}
+            <Button
+              danger
+              disabled={!selectedRowsState || !selectedRowsState.length}
+              onClick={() => {
+                handleRemove(selectedRowsState);
+              }}
+            >
+              删 除
+            </Button>
+            <Update
+              trigger={<Button type="primary"> 新 建 </Button>}
+              id={uid}
+              onOk={onOk}
+            ></Update>
+          </>,
+        ]}
         // 设置请求函数
         request={page}
         // 设置表格列

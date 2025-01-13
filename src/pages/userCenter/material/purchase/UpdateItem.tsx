@@ -2,10 +2,7 @@ import {
   ProFormInstance,
   BetaSchemaForm,
   ModalForm,
-} from "@ant-design/pro-components";
-import { message, } from "antd";
-
-import { useRequest } from "@umijs/max";
+} from "@ant-design/pro-components"; 
 import { getById, updateItem, } from "@/services/userCenter/material/purchase";
 
 import { arr, } from '@/services/userCenter/material/material';
@@ -60,27 +57,6 @@ export default (props: any) => {
 
   // 从 props 中解构 id、trigger、onOk、orderId
   const { id, trigger, onOk, orderId, } = props;
-
-  /**
-   * 使用 useRequest 钩子来处理更新请求
-   * @param {Function} updateItem - 更新数据的函数
-   * @param {Object} config - 请求配置
-   * @param {boolean} config.manual - 是否手动触发请求
-   * @param {Function} config.onSuccess - 请求成功的回调函数
-   * @param {Function} config.onError - 请求失败的回调函数
-   */
-  const { run, loading } = useRequest?.(updateItem, {
-    manual: true,
-    onSuccess: () => {
-      // 请求成功时显示成功消息并调用 onOk 函数
-      message?.success?.("提交成功");
-      onOk?.();
-    },
-    onError: () => {
-      // 请求失败时显示错误消息
-      message?.error?.("提交失败, 请重试!");
-    },
-  });
 
   /**
    * 表单提交时的回调函数

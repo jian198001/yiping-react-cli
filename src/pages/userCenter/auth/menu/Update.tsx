@@ -97,8 +97,6 @@ export default (props: any) => {
 
     setLoading?.(false);
 
-    setLoading?.(false);
-
     return true;
   };
 
