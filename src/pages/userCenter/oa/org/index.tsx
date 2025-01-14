@@ -1,7 +1,7 @@
 // 导入 Update 组件
 import Update from "./Update";
 // 导入分页查询和删除数据的函数
-import { page, del } from "@/services/userCenter/oa/post";
+import { page, del } from "@/services/userCenter/oa/org";
 // 导入 ProComponents 库中的类型
 import type { ActionType, ProColumns } from "@ant-design/pro-components";
 // 导入 ProComponents 库中的组件

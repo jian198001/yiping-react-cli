@@ -5,7 +5,7 @@ import { ProFormInstance, BetaSchemaForm, ModalForm } from "@ant-design/pro-comp
 import { message } from "antd";
 
 // 从 @/services/userCenter/oa/post 模块中导入 update 和 getById 函数
-import { update, getById } from "@/services/userCenter/oa/post";
+import { update, getById } from "@/services/userCenter/oa/org";
 
 // 从 react 库中导入 useRef 钩子
 import { useRef, useState } from "react";
