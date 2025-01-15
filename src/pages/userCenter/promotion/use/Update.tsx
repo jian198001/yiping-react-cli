@@ -1,13 +1,17 @@
 // 导入 Ant Design Pro 的 ProFormInstance、ModalForm、BetaSchemaForm 组件
-import { ProFormInstance, ModalForm, BetaSchemaForm } from "@ant-design/pro-components";
+import {
+  ProFormInstance,
+  ModalForm,
+  BetaSchemaForm,
+} from "@ant-design/pro-components";
 // 导入 Ant Design 的 message 组件
 import { message } from "antd";
 // 导入 userCenter/promotion/use 模块的 update 和 getById 函数
 import { update, getById } from "@/services/userCenter/promotion/use";
 // 导入 React 的 useRef 钩子
-import { useRef, useState } from 'react';
+import { useRef, useState } from "react";
 // 导入 formItems 配置
-import { formItems } from './FormText';
+import { formItems } from "./FormText";
 
 /**
  * Update 组件
@@ -48,13 +52,13 @@ export default (props: any) => {
 
   // 定义初始值
   let initialValues = {
-    id: '',
+    id: "",
     title: "",
   };
 
   // 从 props 中解构 id、trigger、onOk
   const { id, trigger, onOk } = props;
- 
+
   /**
    * 表单提交时的回调函数
    * @async
@@ -62,35 +66,31 @@ export default (props: any) => {
    * @returns {Promise<boolean>}
    */
   const onFinish = async (values: Record<string, any>) => {
- setLoading(true,)    // 将 id 添加到 values 中
+    setLoading?.(true); // 将 id 添加到 values 中
     values = {
       ...values,
       id: id,
     };
 
-    const res = await update?.(values, )
+    const res = await update?.(values);
 
     // 检查更新结果
     if (res?.code !== 0) {
-
       // 显示错误消息
-      message?.error?.(res?.message)
+      message?.error?.(res?.message);
 
-setLoading(false, )
+      setLoading?.(false);
 
       // 返回 false，表示提交失败
-      return false
-
+      return false;
     }
 
     // 显示成功消息
-    message?.success?.("提交成功")
+    message?.success?.("提交成功");
 
-    onOk?.()
+    onOk?.();
 
-setLoading(false, )
-
-
+    setLoading?.(false);
 
     return true;
   };
@@ -108,7 +108,7 @@ setLoading(false, )
       }}
       onOpenChange={onOpenChange}
       initialValues={initialValues}
-      title='编辑信息'
+      title="编辑信息"
       trigger={trigger}
     >
       <BetaSchemaForm layoutType="Embed" columns={formItems} />

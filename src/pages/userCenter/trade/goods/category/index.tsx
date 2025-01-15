@@ -73,6 +73,19 @@ export default () => {
           id={record?.id}
           onOk={actionRef?.current?.reload}
         ></Update>,
+        <Update
+        trigger={<Button>新建子分类</Button>}
+        id={record?.id}
+        onOk={actionRef?.current?.reload}
+      ></Update>,
+      <Button
+        danger
+        onClick={() => {
+          handleRemove(record);
+        }}
+      >
+        删 除
+      </Button>,
       ],
     },
   ];

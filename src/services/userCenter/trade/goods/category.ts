@@ -11,7 +11,7 @@ import { request } from '@umijs/max';
  */
 export async function page(params: any, sort: any, filter: any) {
   // 定义请求的URL
-  const url = '/staff/web/userCenter/trade/goods/category/page.json';
+  const url = '/staff/web/userCenter/goods/goodsCategory/page.json';
   // 发送GET请求获取商品分类列表
   return request?.(url, {
     method: 'GET',
@@ -30,7 +30,7 @@ export async function page(params: any, sort: any, filter: any) {
  */
 export async function update(data: any) {
   // 定义请求的URL
-  const url = '/staff/web/userCenter/trade/goods/category/update.json';
+  const url = '/staff/web/userCenter/goods/goodsCategory/update.json';
   // 发送POST请求更新商品分类信息
   return request?.(url, {
     method: 'POST',
@@ -45,7 +45,7 @@ export async function update(data: any) {
  */
 export async function getById(id: string) {
   // 定义请求的URL
-  const url = '/staff/web/userCenter/trade/goods/category/getById.json';
+  const url = '/staff/web/userCenter/goods/goodsCategory/getById.json';
   // 发送GET请求获取商品分类详情
   return request?.(url, {
     method: 'GET',
@@ -63,7 +63,7 @@ export async function getById(id: string) {
  */
 export async function del(options?: { [key: string]: any }) {
   // 定义请求的URL
-  const url = '/staff/web/userCenter/trade/goods/category/del.json';
+  const url = '/staff/web/userCenter/goods/goodsCategory/del.json';
   // 发送POST请求删除商品分类
   return request?.(url, {
     method: 'POST',
@@ -79,7 +79,7 @@ export async function del(options?: { [key: string]: any }) {
  */
 export async function arr() {
   // 定义请求的URL
-  const url = "/staff/web/userCenter/trade/goods/category/page.json";
+  const url = "/staff/web/userCenter/goods/goodsCategory/page.json";
   // 发送GET请求获取所有商品分类
   return request?.(url, {
     method: "GET",

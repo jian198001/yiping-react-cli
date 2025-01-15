@@ -4,7 +4,7 @@ import {
   ModalForm,
 } from "@ant-design/pro-components";
 import { message } from "antd";
- 
+
 import { getById, update } from "@/services/userCenter/material/purchase";
 
 import { useRef, useState } from "react";
@@ -22,7 +22,7 @@ import { formItemsItem } from "./FormText";
 export default (props: any) => {
   // 创建一个 ProFormInstance 的引用
   const formRef = useRef<ProFormInstance>?.();
-  
+
   // 定义 loading 状态
   const [loading, setLoading] = useState(false);
 
@@ -35,28 +35,28 @@ export default (props: any) => {
     // 如果 id 存在，调用 getById 获取数据
     if (id) {
       const data: any = await getById?.(id);
-  
+
       // 如果数据存在，设置表单字段值
       if (data?.data) {
         return formRef?.current?.setFieldsValue?.({
           ...data?.data,
         });
       }
-  
+
       // 如果数据不存在，设置表单字段值为 id
       return formRef?.current?.setFieldsValue?.({ id: id });
     }
   };
-  
+
   // 定义初始值
   let initialValues = {
     id: "",
     title: "",
   };
-  
+
   // 从 props 中解构 id、trigger、onOk
   const { id, trigger, onOk } = props;
-  
+
   /**
    * 表单提交时的回调函数
    * @async
@@ -69,7 +69,7 @@ export default (props: any) => {
       ...values,
       id: id,
     };
-  
+
     const res = await update?.(values);
 
     // 检查更新结果
@@ -77,7 +77,7 @@ export default (props: any) => {
       // 显示错误消息
       message?.error?.(res?.message);
 
-      setLoading(false);
+      setLoading?.(false);
 
       // 返回 false，表示提交失败
       return false;
@@ -88,15 +88,16 @@ export default (props: any) => {
 
     onOk?.();
 
-    setLoading(false);
+    setLoading?.(false);
 
     return true;
   };
-  
+
   // 返回一个 ModalForm 组件
   return (
     <>
-      <ModalForm formRef={formRef} 
+      <ModalForm
+        formRef={formRef}
         onFinish={onFinish}
         modalProps={{
           // 关闭时销毁模态框

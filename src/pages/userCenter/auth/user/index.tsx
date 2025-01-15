@@ -222,7 +222,7 @@ export default () => {
     setUid(uuid());
 
     (async () => {
-      const { data } = await arr();
+      const { data } = await arr?.();
  
       setRoles(data);
     })();

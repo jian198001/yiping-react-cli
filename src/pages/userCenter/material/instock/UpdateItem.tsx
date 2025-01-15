@@ -4,7 +4,7 @@ import {
   ModalForm,
 } from "@ant-design/pro-components";
 import { message } from "antd";
- 
+
 import { getById, update } from "@/services/userCenter/material/purchase";
 
 import { useRef, useState } from "react";
@@ -51,7 +51,7 @@ export default (props: any) => {
       // 显示错误消息
       message?.error?.(res?.message);
 
-      setLoading(false);
+      setLoading?.(false);
 
       // 返回 false，表示提交失败
       return false;
@@ -62,14 +62,15 @@ export default (props: any) => {
 
     onOk?.();
 
-    setLoading(false);
+    setLoading?.(false);
 
     return true;
   };
 
   return (
     <>
-      <ModalForm formRef={formRef} 
+      <ModalForm
+        formRef={formRef}
         onFinish={onFinish}
         modalProps={{
           destroyOnClose: true,

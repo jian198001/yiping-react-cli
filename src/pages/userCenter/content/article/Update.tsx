@@ -14,8 +14,7 @@ import { update, getById } from "@/services/userCenter/content/article";
 // 从 react 库中导入 useRef 钩子
 import { useRef, useState } from "react";
 
-// 从 ./FormText 模块中导入 formItems 常量
-import { formItems } from "./FormText";
+import { arr } from "@/services/userCenter/content/category";
 
 /**
  * Update 组件用于编辑文章信息
@@ -29,6 +28,8 @@ export default (props: any) => {
   // 创建一个 ProFormInstance 的引用
   const formRef = useRef<ProFormInstance>?.();
 
+  const [categorys, setCategorys] = useState<any>?.([]);
+
   // 定义 loading 状态
   const [loading, setLoading] = useState(false);
 
@@ -38,6 +39,15 @@ export default (props: any) => {
    * @returns {Promise<void>}
    */
   const onOpenChange = async () => {
+    
+    // 获取角色列表数据
+    const { data } = await arr?.();
+    
+    console.log(data);
+
+    // 更新 roles 状态
+    setCategorys?.(data);
+
     // 如果 id 存在，调用 getById 获取数据
     if (id) {
       const data: any = await getById?.(id);
@@ -66,6 +76,135 @@ export default (props: any) => {
   // 从 props 中解构 id、trigger、onOk
   const { id, trigger, onOk } = props;
 
+  let formItems = [
+    {
+      /**
+       * 字段值类型为 group，表示这是一个分组字段
+       */
+      valueType: "group",
+      /**
+       * 定义分组内的列
+       */
+      columns: [
+        {
+          /**
+           * 字段标题为 "标 题"
+           */
+          title: "标 题",
+          /**
+           * 数据索引为 name
+           */
+          dataIndex: "name",
+          /**
+           * 开启排序功能
+           */
+          sorter: true,
+          /**
+           * 设置表单字段的属性
+           */
+          formItemProps: {
+            /**
+             * 设置验证规则
+             */
+            rules: [
+              {
+                /**
+                 * 设置为必填项
+                 */
+                required: true,
+                /**
+                 * 设置错误提示信息
+                 */
+                message: "请输入标题",
+              },
+            ],
+          },
+          /**
+           * 设置字段宽度为 lg
+           */
+          width: "lg",
+        },
+      ],
+    },
+    {
+      /**
+       * 字段值类型为 group，表示这是一个分组字段
+       */
+      valueType: "group",
+      /**
+       * 定义分组内的列
+       */
+      columns: [
+        {
+          /**
+           * 字段标题为 "栏 目"
+           */
+          title: "栏 目",
+          /**
+           * 数据索引为 categoryId
+           */
+          dataIndex: "categoryId",
+          /**
+           * 开启排序功能
+           */
+          sorter: true,
+          /**
+           * 字段值类型为 select
+           */
+          valueType: "select",
+          /**
+           * 设置字段宽度为 sm
+           */
+          width: "sm",
+
+          valueEnum: categorys,
+
+        },
+      ],
+    },
+    {
+      /**
+       * 字段值类型为 group，表示这是一个分组字段
+       */
+      valueType: "group",
+      /**
+       * 定义分组内的列
+       */
+      columns: [
+        {
+          /**
+           * 字段标题为 "内 容"
+           */
+          title: "内 容",
+          /**
+           * 数据索引为 content
+           */
+          dataIndex: "content",
+          /**
+           * 关闭排序功能
+           */
+          sorter: false,
+          /**
+           * 字段值类型为 textarea
+           */
+          valueType: "textarea",
+          /**
+           * 在表格中隐藏该字段
+           */
+          hideInTable: true,
+          /**
+           * 在搜索中隐藏该字段
+           */
+          hideInSearch: true,
+          /**
+           * 设置字段宽度为 lg
+           */
+          width: "lg",
+        },
+      ],
+    },
+  ];
+
   /**
    * 表单提交时的回调函数
    * @async
@@ -73,7 +212,7 @@ export default (props: any) => {
    * @returns {Promise<boolean>}
    */
   const onFinish = async (values: Record<string, any>) => {
-    setLoading(true); // 将 id 添加到 values 中
+    setLoading?.(true); // 将 id 添加到 values 中
     values = {
       ...values,
       id: id,
@@ -86,7 +225,7 @@ export default (props: any) => {
       // 显示错误消息
       message?.error?.(res?.message);
 
-      setLoading(false);
+      setLoading?.(false);
 
       // 返回 false，表示提交失败
       return false;
@@ -97,7 +236,7 @@ export default (props: any) => {
 
     onOk?.();
 
-    setLoading(false);
+    setLoading?.(false);
 
     return true;
   };

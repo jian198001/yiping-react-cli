@@ -6,15 +6,15 @@ import {
 } from "@ant-design/pro-components";
 
 // 从 antd 导入 message 组件
-import { message, } from "antd";
+import { message } from "antd";
 
 // 从 @/services/userCenter/oa/post 导入 update 和 getById 函数
-import { update, getById, } from "@/services/userCenter/oa/post";
+import { update, getById } from "@/services/userCenter/oa/post";
 
 // 从 react 导入 useRef 钩子
-import { useRef, useState } from 'react';
+import { useRef, useState } from "react";
 // 从当前目录的 FormText 文件导入 formItems 配置
-import { formItems, } from './FormText';
+import { formItems } from "./FormText";
 
 /**
  * Update 组件
@@ -24,7 +24,7 @@ import { formItems, } from './FormText';
  * @param {Function} props.onOk - 模态框确认按钮的回调函数
  * @returns {JSX.Element} - 返回 ModalForm 组件
  */
-export default (props: any, ) => {
+export default (props: any) => {
   // 使用 useRef 创建一个 ProFormInstance 的引用
   const formRef = useRef<ProFormInstance>?.();
 
@@ -49,19 +49,19 @@ export default (props: any, ) => {
       }
 
       // 如果数据不存在，设置表单字段值为 id
-      return formRef?.current?.setFieldsValue?.({ id: id, })
+      return formRef?.current?.setFieldsValue?.({ id: id });
     }
     // get options arr
   };
 
   // 定义初始值
   let initialValues = {
-    id: '',
+    id: "",
     title: "",
   };
 
   // 从 props 中解构 id、trigger、onOk
-  const { id, trigger, onOk, } = props;
+  const { id, trigger, onOk } = props;
 
   /**
    * 表单提交时的回调函数
@@ -70,57 +70,52 @@ export default (props: any, ) => {
    * @returns {Promise<boolean>}
    */
   const onFinish = async (values: Record<string, any>) => {
- setLoading(true,)    // 将 id 添加到 values 中
+    setLoading?.(true); // 将 id 添加到 values 中
     values = {
-      ...values
-      ,id: id,
-    }
+      ...values,
+      id: id,
+    };
 
-    const res = await update?.(values, )
+    const res = await update?.(values);
 
     // 检查更新结果
     if (res?.code !== 0) {
-
       // 显示错误消息
-      message?.error?.(res?.message)
+      message?.error?.(res?.message);
 
-setLoading(false, )
+      setLoading?.(false);
 
       // 返回 false，表示提交失败
-      return false
-
+      return false;
     }
 
     // 显示成功消息
-    message?.success?.("提交成功")
+    message?.success?.("提交成功");
 
-    onOk?.()
+    onOk?.();
 
-setLoading(false, )
-
-
+    setLoading?.(false);
 
     return true;
-  }
+  };
 
   // 返回 ModalForm 组件
   return (
-    <ModalForm formRef={formRef} 
-        onFinish={onFinish}
-        modalProps={{
-          // 关闭时销毁模态框
-          destroyOnClose: true,
-          // 设置确认按钮的 loading 状态
-          okButtonProps: { loading, },
-        }}
-        onOpenChange={onOpenChange}
-        initialValues={initialValues}
-        title='编辑信息'
-        trigger={trigger}>
-        <BetaSchemaForm
-      layoutType="Embed"   columns={formItems}         />  
-    </ModalForm> 
+    <ModalForm
+      formRef={formRef}
+      onFinish={onFinish}
+      modalProps={{
+        // 关闭时销毁模态框
+        destroyOnClose: true,
+        // 设置确认按钮的 loading 状态
+        okButtonProps: { loading },
+      }}
+      onOpenChange={onOpenChange}
+      initialValues={initialValues}
+      title="编辑信息"
+      trigger={trigger}
+    >
+      <BetaSchemaForm layoutType="Embed" columns={formItems} />
+    </ModalForm>
   );
 };
-
- 

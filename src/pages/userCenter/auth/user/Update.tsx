@@ -43,10 +43,10 @@ export default (props: any) => {
    */
   const onOpenChange = async () => {
     // 获取角色列表数据
-    const { data } = await arr();
+    const { data } = await arr?.();
 
     // 更新 roles 状态
-    setRoles(data);
+    setRoles?.(data);
 
     // 如果 id 存在，调用 getById 获取数据
     if (id) {
@@ -132,6 +132,10 @@ export default (props: any) => {
           },
           // 设置值枚举
           valueEnum: roles,
+          /**
+           * 设置列宽度为中等
+           */
+          width: "md",
         },
       ],
     },

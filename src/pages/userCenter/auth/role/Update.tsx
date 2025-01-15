@@ -10,9 +10,9 @@ import { message } from "antd";
 // 从 @/services/userCenter/auth/role 模块中导入 update 和 getById 函数
 import { update, getById } from "@/services/userCenter/auth/role";
 // 从 react 库中导入 useRef 钩子
-import { useRef, useState } from 'react';
+import { useRef, useState } from "react";
 // 从当前目录下的 FormText 文件中导入 formItems 配置
-import { formItems } from './FormText';
+import { formItems } from "./FormText";
 
 /**
  * Update 组件用于编辑角色信息
@@ -69,42 +69,39 @@ export default (props: any) => {
    * @returns {Promise<boolean>}
    */
   const onFinish = async (values: Record<string, any>) => {
- setLoading(true,)    // 将 id 添加到 values 中
+    setLoading?.(true); // 将 id 添加到 values 中
     values = {
       ...values,
       id: id,
     };
 
-    const res = await update?.(values, )
+    const res = await update?.(values);
 
     // 检查更新结果
     if (res?.code !== 0) {
-
       // 显示错误消息
-      message?.error?.(res?.message)
+      message?.error?.(res?.message);
 
-setLoading(false, )
+      setLoading?.(false);
 
       // 返回 false，表示提交失败
-      return false
-
+      return false;
     }
 
     // 显示成功消息
-    message?.success?.("提交成功")
+    message?.success?.("提交成功");
 
-    onOk?.()
+    onOk?.();
 
-setLoading(false, )
-
-
+    setLoading?.(false);
 
     return true;
   };
 
   // 返回一个 ModalForm 组件
   return (
-    <ModalForm formRef={formRef} 
+    <ModalForm
+      formRef={formRef}
       onFinish={onFinish}
       modalProps={{
         // 关闭时销毁模态框
