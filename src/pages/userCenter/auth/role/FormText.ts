@@ -48,43 +48,8 @@ let formItems = [
               message: '请输入标题',
             },
           ],
-        },
-        /**
-         * 设置列宽度为中等
-         */
-        width: 'md',
-      },
-      {
-        /**
-         * 字段标题为 "权 限"
-         */
-        title: '权 限',
-        /**
-         * 数据索引为 permission
-         */
-        dataIndex: 'permission',
-        /**
-         * 开启排序功能
-         */
-        sorter: true,
-        /**
-         * 字段值类型为 select
-         */
-        valueType: 'select',
-        /**
-         * 设置列宽度为中等
-         */
-        width: 'md',
-        /**
-         * 设置表单字段的属性
-         */
-        formItemProps: {
-          /**
-           * 设置为多选模式
-           */
-          mode: 'multiple',
-        },
-      },
+        }, 
+      }, 
     ],
   },
 ];

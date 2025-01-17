@@ -94,8 +94,7 @@ export default (props: any,) => {
                     },
                     { type: 'number', min: 0, message: '请输入正数', },
                 ],
-            },
-            width: 'm',
+            }, 
         },],
       }, ]
  

@@ -1,7 +1,7 @@
 /**
  * 导出 formItems 常量
  */
-export { formItems, }
+export { formItems };
 
 /**
  * 定义 formItems 数组，用于配置表单字段
@@ -11,7 +11,7 @@ let formItems = [
     /**
      * 字段值类型为 group，表示这是一个分组字段
      */
-    valueType: 'group',
+    valueType: "group",
     /**
      * 定义分组内的列
      */
@@ -20,19 +20,15 @@ let formItems = [
         /**
          * 字段标题为 "名 称"
          */
-        title: '名 称',
+        title: "名 称",
         /**
          * 数据索引为 name
          */
-        dataIndex: 'name',
+        dataIndex: "name",
         /**
          * 开启排序功能
          */
         sorter: true,
-        /**
-         * 设置列宽度为中等
-         */
-        width: 'md',
         /**
          * 设置表单字段的属性
          */
@@ -49,7 +45,7 @@ let formItems = [
               /**
                * 设置错误提示信息
                */
-              message: '请输入标题',
+              message: "请输入标题",
             },
           ],
         },
@@ -60,7 +56,7 @@ let formItems = [
     /**
      * 字段值类型为 group，表示这是一个分组字段
      */
-    valueType: 'group',
+    valueType: "group",
     /**
      * 定义分组内的列
      */
@@ -69,11 +65,11 @@ let formItems = [
         /**
          * 字段标题为 "组 织"
          */
-        title: '组 织',
+        title: "组 织",
         /**
          * 数据索引为 orgName
          */
-        dataIndex: 'orgName',
+        dataIndex: "orgName",
         /**
          * 开启排序功能
          */
@@ -81,11 +77,11 @@ let formItems = [
         /**
          * 字段值类型为 select
          */
-        valueType: 'select',
+        valueType: "select",
         /**
-         * 设置列宽度为中等
+         * 设置字段宽度为 sm
          */
-        width: 'md',
+        width: "sm",
       },
     ],
   },

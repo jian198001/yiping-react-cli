@@ -14,9 +14,7 @@ let formItems = [
         // 数据索引为 name
         dataIndex: 'name',
         // 开启排序功能
-        sorter: true,
-        // 设置宽度为中等
-        width: 'md',
+        sorter: true, 
         // 定义表单项的属性
         formItemProps: {
           // 设置验证规则
@@ -36,9 +34,7 @@ let formItems = [
         // 数据索引为 code
         dataIndex: 'code',
         // 开启排序功能
-        sorter: true,
-        // 设置宽度为中等
-        width: 'md',
+        sorter: true, 
       },
     ],
   },
@@ -53,9 +49,7 @@ let formItems = [
         // 数据索引为 name
         dataIndex: 'name',
         // 开启排序功能
-        sorter: true,
-        // 设置宽度为中等
-        width: 'md',
+        sorter: true, 
         // 字段值类型为 cascader
         valueType: 'cascader',
         // 在表格中隐藏该字段
@@ -92,9 +86,7 @@ let formItems = [
         // 开启排序功能
         sorter: true,
         // 字段值类型为 digit
-        valueType: 'digit',
-        // 设置宽度为中等
-        width: 'md',
+        valueType: 'digit', 
         // 在表格中隐藏该字段
         hideInTable: true,
         // 在搜索栏中隐藏该字段
@@ -110,9 +102,7 @@ let formItems = [
         // 开启排序功能
         sorter: true,
         // 字段值类型为 digit
-        valueType: 'digit',
-        // 设置宽度为中等
-        width: 'md',
+        valueType: 'digit', 
         // 在表格中隐藏该字段
         hideInTable: true,
         // 在搜索栏中隐藏该字段

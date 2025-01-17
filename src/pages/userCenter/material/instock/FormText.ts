@@ -14,8 +14,7 @@ let formItems = [
                         message: '请输入物料名称',
                     },
                 ],
-            },
-            width: 'm',
+            }, 
         },{
             title: '规 格',
             dataIndex: 'materialSku',
@@ -28,8 +27,7 @@ let formItems = [
                         message: '请输入规格',
                     },
                 ],
-            },
-            width: 'm',
+            }, 
         },],
     },{
         valueType: 'group',
@@ -45,8 +43,7 @@ let formItems = [
                         message: '请输入数量',
                     },
                 ],
-            },
-            width: 'm',
+            }, 
         },{
             title: '操作时间',
             dataIndex: 'logTime',
@@ -60,8 +57,7 @@ let formItems = [
                         message: '请选择操作时间',
                     },
                 ],
-            },
-            width: 'm',
+            }, 
         },],
     },]
 
@@ -81,8 +77,7 @@ let formItemsItem = [ // 采购单明细
                         message: '请输入物料名称',
                     },
                 ],
-            },
-            width: 'm',
+            }, 
             hideInSearch: true,
             readonly: true,
         }, {
@@ -97,8 +92,7 @@ let formItemsItem = [ // 采购单明细
                         message: '请输入物料名称',
                     },
                 ],
-            },
-            width: 'm',
+            }, 
             hideInSearch: true,
             readonly: true,
         }, {
@@ -115,8 +109,7 @@ let formItemsItem = [ // 采购单明细
                         message: '请输入数量',
                     },
                 ],
-            },
-            width: 'm',
+            }, 
             hideInSearch: true,
             readonly: true,
         },{
@@ -133,8 +126,7 @@ let formItemsItem = [ // 采购单明细
                         message: '请输入归还数量',
                     },
                 ],
-            },
-            width: 'm',
+            }, 
             hideInSearch: true,
         },],
     },]

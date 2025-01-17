@@ -28,11 +28,7 @@ let formItems = [
         /**
          * 开启排序功能
          */
-        sorter: true,
-        /**
-         * 设置列宽度为中等
-         */
-        width: 'md',
+        sorter: true, 
         /**
          * 设置表单字段的属性
          */

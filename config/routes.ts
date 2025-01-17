@@ -228,6 +228,18 @@ export default [
     path: '/material',
     routes: [
       {
+        name: 'material',
+        icon: 'user',
+        path: '/material/material',
+        component: './userCenter/material/material',
+      },
+      {
+        name: 'category',
+        icon: 'user',
+        path: '/material/category',
+        component: './userCenter/material/category',
+      },
+      {
         name: 'purchase',
         icon: 'user',
         path: '/material/purchase',
@@ -244,18 +256,6 @@ export default [
         icon: 'user',
         path: '/material/consume',
         component: './userCenter/material/consume',
-      },
-      {
-        name: 'instock',
-        icon: 'user',
-        path: '/material/instock',
-        component: './userCenter/material/instock',
-      },
-      {
-        name: 'form',
-        icon: 'user',
-        path: '/material/form',
-        component: './userCenter/material/form',
       },
     ],
   },

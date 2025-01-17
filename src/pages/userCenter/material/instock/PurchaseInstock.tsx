@@ -66,8 +66,7 @@ export default (props: any,) => {
           message: '请输入物料名称',
         },
       ],
-    },
-    width: 'm',
+    }, 
     hideInSearch: true,
     readonly: true,
   }, {
@@ -82,8 +81,7 @@ export default (props: any,) => {
           message: '请输入物料名称',
         },
       ],
-    },
-    width: 'm',
+    }, 
     hideInSearch: true,
     readonly: true,
   }, {
@@ -100,8 +98,7 @@ export default (props: any,) => {
           message: '请输入数量',
         },
       ],
-    },
-    width: 'm',
+    }, 
     hideInSearch: true,
     readonly: true,
   }, {
@@ -118,8 +115,7 @@ export default (props: any,) => {
           message: '请选择失效期',
         },
       ],
-    },
-    width: 'm',
+    }, 
     hideInSearch: true,
   },
   {
@@ -152,8 +148,7 @@ export default (props: any,) => {
               message: '请输入标题',
             },
           ],
-        },
-        width: 'm',
+        }, 
       },],
     },]
 

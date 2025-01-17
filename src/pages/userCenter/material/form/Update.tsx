@@ -150,11 +150,10 @@ export default (props: any) => {
         rules: [
           {
             required: true,
-            message: "请输入数量",
+            message: "请输入正数",
           },
         ],
-      },
-      width: "m",
+      }, 
       hideInSearch: true,
     },
   ];

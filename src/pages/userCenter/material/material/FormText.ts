@@ -18,7 +18,7 @@ let formItems = [
     columns: [
       {
         /**
-         * 字段标题为 "名 称"
+         * 字段标题为 "标 题"
          */
         title: "名 称",
         /**
@@ -45,54 +45,49 @@ let formItems = [
               /**
                * 设置错误提示信息
                */
-              message: "请输入标题",
+              message: "请输入名称",
             },
           ],
         },
       },
       {
         /**
-         * 字段标题为 "上级部门"
+         * 字段标题为 "规格"
          */
-        title: "上级部门",
+        title: "规 格",
         /**
-         * 数据索引为 name
+         * 数据索引为 sku
          */
-        dataIndex: "name",
+        dataIndex: "sku",
         /**
          * 开启排序功能
          */
         sorter: true,
-        /**
-         * 字段值类型为 cascader
-         */
-        valueType: "cascader",
-        /**
-         * 设置字段宽度为 sm
-         */
-        width: "sm",
       },
+    ],
+  },
+  {
+    /**
+     * 字段值类型为 group，表示这是一个分组字段
+     */
+    valueType: "group",
+    /**
+     * 定义分组内的列
+     */
+    columns: [
       {
         /**
-         * 字段标题为 "组 织"
+         * 字段标题为 "生产厂家"
          */
-        title: "组 织",
+        title: "生产厂家",
         /**
-         * 数据索引为 name
+         * 数据索引为 status
          */
-        dataIndex: "name",
+        dataIndex: "factory",
         /**
          * 开启排序功能
          */
         sorter: true,
-        /**
-         * 字段值类型为 select
-         */
-        valueType: "select",
-        /**
-         * 设置字段宽度为 sm
-         */
-        width: "sm",
       },
     ],
   },

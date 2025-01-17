@@ -87,6 +87,10 @@ export default {
   'menu.content.category': '栏目管理',
   // 物料管理页面的标签
   'menu.material': '物料管理',
+  // 物料管理页面的标签
+  'menu.material.material': '物料管理',
+  // 物料分类页面的标签
+  'menu.material.category': '物料分类',
   // 采购管理页面的标签
   'menu.material.purchase': '采购管理',
   // 库存管理页面的标签

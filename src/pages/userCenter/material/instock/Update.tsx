@@ -152,8 +152,7 @@ export default (props: any) => {
             message: "请输入数量",
           },
         ],
-      },
-      width: "m",
+      }, 
       hideInSearch: true,
     },
   ];
