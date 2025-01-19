@@ -49,6 +49,7 @@ async function render() {
     type: ApplyPluginsType.compose,
     initialValue() {
       const context = {
+        useStream: true,
         routes,
         routeComponents,
         pluginManager,
@@ -77,6 +78,6 @@ render();
 
     if (typeof window !== 'undefined') {
       window.g_umi = {
-        version: '4.3.20',
+        version: '4.4.4',
       };
     }

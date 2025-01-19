@@ -52,37 +52,4 @@ let formItems = [
       },
     ],
   },
-  {
-    /**
-     * 字段值类型为 group，表示这是一个分组字段
-     */
-    valueType: "group",
-    /**
-     * 定义分组内的列
-     */
-    columns: [
-      {
-        /**
-         * 字段标题为 "组 织"
-         */
-        title: "组 织",
-        /**
-         * 数据索引为 orgName
-         */
-        dataIndex: "orgName",
-        /**
-         * 开启排序功能
-         */
-        sorter: true,
-        /**
-         * 字段值类型为 select
-         */
-        valueType: "select",
-        /**
-         * 设置字段宽度为 sm
-         */
-        width: "sm",
-      },
-    ],
-  },
 ];

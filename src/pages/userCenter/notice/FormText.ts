@@ -48,6 +48,7 @@ let formItems = [
               message: '请输入标题',
             },
           ],
+          width: 'lg',
         }, 
       },
       {

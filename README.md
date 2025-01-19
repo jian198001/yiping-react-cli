@@ -17,3 +17,6 @@
 
 <img src="https://zero9.work/static/media/img/q.jpg" width="256" />
 
+#### 包管理器
+
+推荐使用 tyarn 来进行包管理，可以极大地减少 install 的时间和失败的概率，并且完全兼容 npm。

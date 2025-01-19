@@ -260,6 +260,19 @@ export default [
     ],
   },
   {
+    name: 'lowcode',
+    icon: 'user',
+    path: '/lowcode',
+    routes: [
+      {
+        name: 'editor',
+        icon: 'user',
+        path: '/lowcode/editor',
+        component: './userCenter/lowcode',
+      },
+    ],
+  },  
+  {
     name: 'account',
     icon: 'user',
     path: '/account',

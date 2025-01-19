@@ -86,6 +86,7 @@ let formItems = [
          * 设置字段宽度为 sm
          */
         width: 'sm',
+        options: [ { label: '1', value: '1' }, { label: '2', value: '2' } ],
       },
     ],
   },

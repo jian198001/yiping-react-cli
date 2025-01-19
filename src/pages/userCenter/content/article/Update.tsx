@@ -42,9 +42,7 @@ export default (props: any) => {
     
     // 获取角色列表数据
     const { data } = await arr?.();
-    
-    console.log(data);
-
+     
     // 更新 roles 状态
     setCategorys?.(data);
 

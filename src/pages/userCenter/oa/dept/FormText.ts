@@ -56,9 +56,9 @@ let formItems = [
          */
         title: "上级部门",
         /**
-         * 数据索引为 name
+         * 数据索引为 parentId
          */
-        dataIndex: "name",
+        dataIndex: "parentId",
         /**
          * 开启排序功能
          */
@@ -72,6 +72,17 @@ let formItems = [
          */
         width: "sm",
       },
+    ],
+  },
+  {
+    /**
+     * 字段值类型为 group，表示这是一个分组字段
+     */
+    valueType: "group",
+    /**
+     * 定义分组内的列
+     */
+    columns: [
       {
         /**
          * 字段标题为 "组 织"
@@ -80,7 +91,7 @@ let formItems = [
         /**
          * 数据索引为 name
          */
-        dataIndex: "name",
+        dataIndex: "orgId",
         /**
          * 开启排序功能
          */

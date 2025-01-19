@@ -101,4 +101,8 @@ export default {
   'menu.material.instock': '物料出入库日志',
   // 物料出入库单据页面的标签
   'menu.material.form': '物料出入库单据',
+  // 低代码编辑页面的标签
+  'menu.lowcode': '低代码编辑',
+  // 低代码编辑器页面的标签
+  'menu.lowcode.editor': '低代码编辑器',
 };

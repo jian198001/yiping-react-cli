@@ -216,7 +216,8 @@ interface IConfigTypes {
     imports?: (Array<string> | undefined);
 };
     routePrefetch: {
-
+    defaultPrefetch?: ("none" | "intent" | "render" | "viewport" | undefined);
+    defaultPrefetchTimeout?: (number | undefined);
 };
     terminal: {
 
@@ -237,6 +238,7 @@ interface IConfigTypes {
     pureApp?: (boolean | undefined);
     pureHtml?: (boolean | undefined);
 } | undefined);
+    useStream?: (boolean | undefined);
 };
     lowImport: {
     libs?: (Array<any> | undefined);
@@ -364,6 +366,7 @@ interface IConfigTypes {
 };
     model: {
     extraModels?: (Array<string> | undefined);
+    sort?: ((((...args: any[]) => unknown) | undefined) | undefined);
 };
     moment2dayjs: {
     preset?: ("antd" | "antdv3" | "none" | undefined);

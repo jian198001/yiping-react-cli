@@ -9,6 +9,7 @@ import { createPluginManager } from './core/plugin';
 import { getRoutes } from './core/route';
 import type { Location } from 'history';
 
+
 import 'E:/workSpace/gitee/yiping-react-cli/src/global.less';
 import 'E:/workSpace/gitee/yiping-react-cli/src/global.tsx';
 import 'antd/dist/reset.css';
