@@ -27,6 +27,7 @@ import { getColumns } from "@/utils";
 import { uuid } from "@/utils";
 // 导入 UmiJS 中的组件和钩子
 import { FormattedMessage, useIntl } from "@umijs/max";
+import Sku from "./Sku";
 /**
  * 页面组件
  * @returns {JSX.Element} - 返回页面组件
@@ -75,17 +76,24 @@ export default () => {
           onOk={actionRef?.current?.reload}
         ></Update>,
         // 编辑规格及价格按钮
-        <Button>编辑规格及价格</Button>,
+        <Sku
+          key={record?.id}
+          trigger={<Button>编辑规格及价格</Button>}
+          id={record?.id}
+          onOk={actionRef?.current?.reload}
+        ></Sku>,
         // 上架按钮
         <Button>上 架</Button>,
         // 下架按钮
-        <Button>下 架</Button>,
-        // 删除按钮
+        <Button disabled={record?.approveStatus !== "onsale"}>下 架</Button>,
+        // 删除按钮,只有未上架时才有效
         <Button
           danger
           onClick={() => {
+            // 调用 handleRemove 函数，传入选中行的 id
             handleRemove(record?.id);
           }}
+          disabled={record?.approveStatus === "onsale"}
         >
           删 除
         </Button>,
