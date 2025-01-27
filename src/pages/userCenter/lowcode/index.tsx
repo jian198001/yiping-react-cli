@@ -1,5 +1,5 @@
-import { Schema, toast } from "amis";
-import { Editor, ShortcutKey } from "amis-editor";
+
+import { Editor, } from "amis-editor";
 import axios from "axios";
 // import copy from 'copy-to-clipboard';
 import "amis-editor-core/lib/style.css";
@@ -8,17 +8,52 @@ import "amis/lib/helper.css";
 import "amis/sdk/iconfont.css";
 import { setDefaultTheme } from "amis";
 import "./index.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { DesktopOutlined, MobileOutlined } from "@ant-design/icons";
 
 setDefaultTheme("cxd");
 const MyEditor = () => {
-  const { schema } = useState({ schema: "" });
+  const [schema, setSchema] = useState({
+    type: "page",
+    title: "Hello world",
+    body: [],
+    id: "u:22f85d1816f4",
+    asideResizor: false,
+    pullRefresh: {
+      disabled: true,
+    },
+  });
 
   const [isMobile, setIsMobile] = useState(false);
   const [preview, setPreview] = useState(false);
 
-  const onChange = (val: any) => {};
+  const onChange = (val: any) => {
+    setSchema(val);
+  };
+
+  useEffect(() => {
+    const schema = localStorage.getItem("schema");
+    if (schema) {  
+      return setSchema(JSON.parse(schema));
+    }
+    
+    // 初始化
+    const schemaNew = {
+      type: "page1",
+      title: "Hello world",
+      body: [],
+      id: "u:22f85d1816f4",
+      asideResizor: false,
+      pullRefresh: {
+        disabled: true,
+      },
+    }
+
+    setSchema(schemaNew);
+
+    localStorage.setItem("schema", JSON.stringify(schemaNew));
+
+  }, []);
 
   return (
     <div className="Editor-Demo">

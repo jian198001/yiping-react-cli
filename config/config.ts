@@ -9,6 +9,7 @@ import routes from "./routes";
 const { REACT_APP_ENV = "dev" } = process.env;
 
 export default defineConfig({
+  dva: {},
   publicPath: process.env.NODE_ENV === 'production' ? './' : '/',
   /**
    * @name 开启 hash 模式

@@ -2703,6 +2703,11 @@
   resolved "https://registry.npmmirror.com/@formatjs/intl-utils/-/intl-utils-2.3.0.tgz#2dc8c57044de0340eb53a7ba602e59abf80dc799"
   integrity sha512-KWk80UPIzPmUg+P0rKh6TqspRw0G6eux1PuJr+zz47ftMaZ9QDwbGzHZbtzWkl5hgayM/qrKRutllRC7D/vVXQ==
 
+"@fortawesome/fontawesome-free@^6.6.0":
+  version "6.7.2"
+  resolved "https://registry.npmmirror.com/@fortawesome/fontawesome-free/-/fontawesome-free-6.7.2.tgz#8249de9b7e22fcb3ceb5e66090c30a1d5492b81a"
+  integrity sha512-JUOtgFW6k9u4Y+xeIaEiLr3+cjoUPiAuLXoyKOJSia6Duzb7pq+A76P9ZdPDoAoxHdHzq6gE9/jKBGXlZT8FbA==
+
 "@humanwhocodes/config-array@^0.11.8":
   version "0.11.14"
   resolved "https://registry.npmmirror.com/@humanwhocodes/config-array/-/config-array-0.11.14.tgz#d78e481a039f7566ecc9660b4ea7fe6b1fec442b"
@@ -5091,7 +5096,7 @@ amdefine@>=0.0.4:
   resolved "https://registry.npmmirror.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
   integrity sha512-S2Hw0TtNkMJhIabBwIojKL9YHO5T0n5eNqWJ7Lrlel/zDbftQpxpapi8tZs3X1HWa+u+QeydGmzzNU0m09+Rcg==
 
-amis-core@*, amis-core@^6.10.0:
+amis-core@*, amis-core@^6.10.0, amis-core@^6.8.0:
   version "6.10.0"
   resolved "https://registry.npmmirror.com/amis-core/-/amis-core-6.10.0.tgz#825012c6b5658dbe9abe68fcd234f49ab444eb23"
   integrity sha512-Py75LLmoy/8Tmr0z+SSoOYxfyCt9mkKYdSwdFCLXmOE+8kG+EYcrTvbOHeInTeoraxL8wO6IMB929ltx8dsTsw==
@@ -5117,7 +5122,7 @@ amis-core@*, amis-core@^6.10.0:
     tslib "^2.3.1"
     uncontrollable "7.2.1"
 
-amis-editor-core@^6.10.0:
+amis-editor-core@^6.10.0, amis-editor-core@^6.8.0:
   version "6.10.0"
   resolved "https://registry.npmmirror.com/amis-editor-core/-/amis-editor-core-6.10.0.tgz#c67cfbf38ee9cf1fd64bfe599bec687e04d232c8"
   integrity sha512-cgj5vmW2YdSpkAPZAZSCPJs9SOiuBHA/Q1wfFphm6d68hIiKSTR2cVYuHkZS8Z1G+KN0uY01VtkixuO1LYKE2w==
@@ -5134,7 +5139,7 @@ amis-editor-core@^6.10.0:
     react-json-view "^1.21.3"
     sortablejs "^1.14.0"
 
-amis-editor@^6.10.0:
+amis-editor@^6.8.0:
   version "6.10.0"
   resolved "https://registry.npmmirror.com/amis-editor/-/amis-editor-6.10.0.tgz#9cd5c49e8fb83e4df02b2d68a112768cd34c7a50"
   integrity sha512-02h6SVGEcscHtaQ8fgPwYti2a+UiqwyvlX9xsg9dRrM6sEDUrXJjcacJ9v81TFR97zhrsqZGsiLBya+p1ZTmww==
@@ -5171,7 +5176,7 @@ amis-theme-editor-helper@*:
     amis-ui "*"
     style-inject "^0.3.0"
 
-amis-ui@*, amis-ui@^6.10.0:
+amis-ui@*, amis-ui@^6.10.0, amis-ui@^6.8.0:
   version "6.10.0"
   resolved "https://registry.npmmirror.com/amis-ui/-/amis-ui-6.10.0.tgz#cc83a210f173c95def8c46022038b14a3d168617"
   integrity sha512-X5xidQEz7Dye+tWUNKzORGLKiwtHLlIQ2TTp5nYaTEZX4G/4rzWRLwT55IPkSoJ3T3qk9bHYYMmx7p6672BhOQ==
@@ -5217,7 +5222,7 @@ amis-ui@*, amis-ui@^6.10.0:
     tslib "^2.3.1"
     uncontrollable "7.2.1"
 
-amis@*:
+amis@*, amis@^6.8.0:
   version "6.10.0"
   resolved "https://registry.npmmirror.com/amis/-/amis-6.10.0.tgz#cc22321c0661f17e1ae55b5fa49ce50d92807eeb"
   integrity sha512-yhX3E8Qgzxiqp7EqItp+GeYsM2MyAQqFvk3BHAA4yUnKeBRgQkAAkxk8325Ch2i3U3ON5sDbtu44Y57zJ7PscA==
@@ -12549,10 +12554,17 @@ moment-timezone@^0.5.34:
   dependencies:
     moment "^2.29.4"
 
-moment@^2.19.4, moment@^2.24.0, moment@^2.29.2, moment@^2.29.4:
+moment@^2.19.4, moment@^2.24.0, moment@^2.29.2, moment@^2.29.4, moment@^2.30.1:
   version "2.30.1"
   resolved "https://registry.npmmirror.com/moment/-/moment-2.30.1.tgz#f8c91c07b7a786e30c59926df530b4eac96974ae"
   integrity sha512-uEmtNhbDOrWPFS+hdjFCBfy9f2YoyzRpwcl+DqpC6taX21FzsTLQVbMV/W7PzNSX6x/bhC1zA3c2UQ5NzH6how==
+
+monaco-editor-webpack-plugin@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.npmmirror.com/monaco-editor-webpack-plugin/-/monaco-editor-webpack-plugin-6.0.0.tgz#628956ce1851afa2a5f6c88d0ecbb24e9a444898"
+  integrity sha512-vC886Mzpd2AkSM35XLkfQMjH+Ohz6RISVwhAejDUzZDheJAiz6G34lky1vyO8fZ702v7IrcKmsGwL1rRFnwvUA==
+  dependencies:
+    loader-utils "^2.0.0"
 
 monaco-editor@0.30.1:
   version "0.30.1"
@@ -15611,6 +15623,11 @@ redent@^3.0.0:
     indent-string "^4.0.0"
     strip-indent "^3.0.0"
 
+redux-persist@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.npmmirror.com/redux-persist/-/redux-persist-6.0.0.tgz#b4d2972f9859597c130d40d4b146fecdab51b3a8"
+  integrity sha512-71LLMbUq2r02ng2We9S215LtPu3fY0KgaGE0k8WRgl6RkqxtGfl7HUozz1Dftwsb0D/5mZ8dwAaPbtnzfvbEwQ==
+
 redux-saga@^0.16.0:
   version "0.16.2"
   resolved "https://registry.npmmirror.com/redux-saga/-/redux-saga-0.16.2.tgz#993662e86bc945d8509ac2b8daba3a8c615cc971"
@@ -17903,7 +17920,7 @@ umi-utils@^1.5.1:
     prettier "1.15.3"
     slash2 "2.0.0"
 
-umi@4.4.4, umi@^4.3.20:
+umi@4.4.4:
   version "4.4.4"
   resolved "https://registry.npmmirror.com/umi/-/umi-4.4.4.tgz#cdae40cbdfafe46a81a2c8e32de6334ca34d554b"
   integrity sha512-5ymoTVbuVlMD36XE1jcAQJ4KA8n5olZ31QGqbunEiZUCYubJk6E+30rZBo1pyNe6Zn6HROK8JUUdF1WDn1nchw==

@@ -35,7 +35,7 @@ export default () => {
       valueType: 'option',
       render: (_, record) => [
         <>
-          {(<Update key={record.id} trigger={<Button type='primary'>详 情</Button>} id={record?.id} onOk={actionRef?.current?.reload}></Update>)}
+          {(<Update key={record?.id} trigger={<Button type='primary'>详 情</Button>} id={record?.id} onOk={actionRef?.current?.reload}></Update>)}
            
         </>
   

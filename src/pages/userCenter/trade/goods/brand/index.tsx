@@ -71,7 +71,7 @@ export default () => {
       render: (_, record) => [
         // 编辑按钮
         <Update
-          key={record.id}
+          key={record?.id}
           trigger={<Button>编 辑</Button>}
           id={record?.id}
           onOk={actionRef?.current?.reload}

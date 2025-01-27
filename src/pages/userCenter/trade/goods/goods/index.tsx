@@ -69,7 +69,8 @@ export default () => {
       // 渲染函数，返回一个编辑按钮，点击按钮弹出编辑模态框
       render: (_, record) => [
         <Update
-          trigger={<a>编 辑</a>}
+          key={record?.id}
+          trigger={<Button>编 辑</Button>}
           id={record?.id}
           onOk={actionRef?.current?.reload}
         ></Update>,
@@ -80,7 +81,14 @@ export default () => {
         // 下架按钮
         <Button>下 架</Button>,
         // 删除按钮
-        <Button>删 除</Button>,
+        <Button
+          danger
+          onClick={() => {
+            handleRemove(record?.id);
+          }}
+        >
+          删 除
+        </Button>,
       ],
     },
   ];
@@ -148,16 +156,6 @@ export default () => {
         // 自定义工具栏渲染函数，返回一个包含删除按钮和新建按钮的数组
         toolBarRender={() => [
           <>
-            {" "}
-            <Button
-              danger
-              disabled={!selectedRowsState || !selectedRowsState.length}
-              onClick={() => {
-                handleRemove(selectedRowsState);
-              }}
-            >
-              删 除
-            </Button>
             <Update
               trigger={<Button type="primary"> 新 建 </Button>}
               id={uid}

@@ -50,7 +50,7 @@ export default () => {
       // 渲染函数，返回一个详情按钮，点击按钮弹出相应模态框
       render: (_, record) => [
         <>
-          {(<Update key={record.id} trigger={<Button type='primary'>详 情</Button>} id={record?.id} onOk={actionRef?.current?.reload}></Update>)}
+          {(<Update key={record?.id} trigger={<Button type='primary'>详 情</Button>} id={record?.id} onOk={actionRef?.current?.reload}></Update>)}
         </>
       ],
     },

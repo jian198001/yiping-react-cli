@@ -64,7 +64,7 @@ export default () => {
       // 渲染函数，返回一个编辑按钮，点击按钮弹出编辑模态框
       render: (_, record) => [
         <Update
-          key={record.id}
+          key={record?.id}
           trigger={<a>编 辑</a>}
           id={record?.id}
           onOk={actionRef?.current?.reload}

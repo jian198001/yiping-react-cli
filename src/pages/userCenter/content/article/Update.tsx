@@ -40,7 +40,7 @@ export default (props: any) => {
    */
   const onOpenChange = async () => {
     
-    // 获取角色列表数据
+    // 获取栏目列表数据
     const { data } = await arr?.();
      
     // 更新 roles 状态

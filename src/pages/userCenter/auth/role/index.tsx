@@ -55,7 +55,7 @@ export default () => {
       // 渲染函数，返回一个编辑按钮和删除按钮，点击按钮弹出相应模态框
       render: (_, record) => [
         <Update
-          key={record.id}
+          key={record?.id}
           trigger={<Button type='primary' disabled={record?.name === '系统管理员' } >
             编 辑
           </Button>}
