@@ -69,21 +69,32 @@ export default () => {
       valueType: "option",
       // 渲染函数，返回一个编辑按钮，点击按钮弹出编辑模态框
       render: (_, record) => [
+        // 编辑按钮,只有未上架时才有效
         <Update
           key={record?.id}
-          trigger={<Button>编 辑</Button>}
+          trigger={
+            <Button disabled={record?.approveStatus === "onsale"}>编 辑</Button>
+          }
           id={record?.id}
           onOk={actionRef?.current?.reload}
         ></Update>,
-        // 编辑规格及价格按钮
+        // 编辑规格按钮
         <Sku
           key={record?.id}
-          trigger={<Button>编辑规格及价格</Button>}
+          trigger={
+            <Button disabled={record?.approveStatus === "onsale"}>
+              编辑规格
+            </Button>
+          }
           id={record?.id}
           onOk={actionRef?.current?.reload}
         ></Sku>,
-        // 上架按钮
-        <Button>上 架</Button>,
+        // 按钮,只有未上架时才有效
+        <Button disabled={record?.approveStatus === "onsale"}>编辑价格</Button>,
+        // 按钮,只有未上架时才有效
+        <Button disabled={record?.approveStatus === "onsale"}>编辑图片</Button>,
+        // 按钮,只有未上架时才有效
+        <Button disabled={record?.approveStatus === "onsale"}>上 架</Button>,
         // 下架按钮
         <Button disabled={record?.approveStatus !== "onsale"}>下 架</Button>,
         // 删除按钮,只有未上架时才有效

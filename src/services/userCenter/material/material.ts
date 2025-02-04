@@ -2,6 +2,20 @@
 /* eslint-disable */
 import { request } from '@umijs/max';
 
+/** 获取列表 GET */
+export async function page(params: any, sort: any, filter: any) {
+  const url = '/staff/web/userCenter/purchase/material/page.json';
+
+  return request?.(url, {
+    method: 'GET',
+    params: {
+      params: params,
+      sort: sort,
+      filter: filter,
+    },
+  });
+}
+
 /**
  * 获取材料列表
  * @param {any} params - 查询参数

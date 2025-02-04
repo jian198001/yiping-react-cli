@@ -83,7 +83,7 @@ let formItems = [
         /**
          * 数据索引为 status
          */
-        dataIndex: "factory",
+        dataIndex: "factoryId",
         /**
          * 开启排序功能
          */

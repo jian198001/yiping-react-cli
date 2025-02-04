@@ -162,6 +162,7 @@ export default (props: any) => {
         ],
       }, 
       hideInSearch: true,
+      initialValue: 1,
     },
   ];
 

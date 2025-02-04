@@ -9,7 +9,7 @@ import {
 import { getPluginManager } from '../core/plugin';
 import EventEmitter from 'E:/workSpace/gitee/yiping-react-cli/node_modules/event-emitter';
 // @ts-ignore
-import warning from 'E:/workSpace/gitee/yiping-react-cli/node_modules/@umijs/plugins/node_modules/warning';
+import warning from 'E:/workSpace/gitee/yiping-react-cli/node_modules/warning';
 
 export {
   createIntl,

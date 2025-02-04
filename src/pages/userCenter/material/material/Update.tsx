@@ -8,13 +8,10 @@ import {
 import { message } from "antd";
 
 // 从 @/services/userCenter/notice 模块中导入 update 和 getById 函数
-import { update, getById } from "@/services/userCenter/notice";
+import { update, getById } from "@/services/userCenter/material/material";
 
 // 从 react 库中导入 useRef 钩子
 import { useRef, useState } from "react";
-
-// 从当前目录下的 FormText 文件中导入 formItems 配置
-import { formItems } from "./FormText";
 
 /**
  * Update 组件用于编辑通知信息
@@ -31,6 +28,8 @@ export default (props: any, ref: any) => {
   // 定义 loading 状态
   const [loading, setLoading] = useState(false);
 
+  const [categoryOptions, setCategoryOptions] = useState({});
+
   const [messageApi, contextHolder] = message.useMessage();
 
   /**
@@ -42,7 +41,7 @@ export default (props: any, ref: any) => {
     // 如果 id 存在，调用 getById 获取数据
     if (id) {
       const data: any = await getById?.(id);
- 
+
       // 如果数据存在，设置表单字段值
       if (data?.data) {
         return formRef?.current?.setFieldsValue?.({
@@ -83,7 +82,7 @@ export default (props: any, ref: any) => {
     // 检查更新结果
     if (res?.code !== 0) {
       // 显示错误消息
-     // messageApi?.error?.(res?.message);
+      // messageApi?.error?.(res?.message);
 
       setLoading?.(false);
 
@@ -92,15 +91,108 @@ export default (props: any, ref: any) => {
     } else {
       // 显示成功消息
       messageApi?.success?.("提交成功");
-  
+
       onOk?.();
-  
+
       setLoading?.(false);
-  
+
       return true;
     }
-
   };
+  let formItems = [
+    {
+      /**
+       * 字段值类型为 group，表示这是一个分组字段
+       */
+      valueType: "group",
+      /**
+       * 定义分组内的列
+       */
+      columns: [
+        {
+          /**
+           * 字段标题为 "标 题"
+           */
+          title: "名 称",
+          /**
+           * 数据索引为 name
+           */
+          dataIndex: "name",
+          /**
+           * 开启排序功能
+           */
+          sorter: true,
+          /**
+           * 设置表单字段的属性
+           */
+          formItemProps: {
+            /**
+             * 设置验证规则
+             */
+            rules: [
+              {
+                /**
+                 * 设置为必填项
+                 */
+                required: true,
+                /**
+                 * 设置错误提示信息
+                 */
+                message: "请输入名称",
+              },
+            ],
+          },
+        },
+        {
+          /**
+           * 字段标题为 "规格"
+           */
+          title: "规 格",
+          /**
+           * 数据索引为 sku
+           */
+          dataIndex: "sku",
+          /**
+           * 开启排序功能
+           */
+          sorter: true,
+        },
+      ],
+    },
+    {
+      /**
+       * 字段值类型为 group，表示这是一个分组字段
+       */
+      valueType: "group",
+      /**
+       * 定义分组内的列
+       */
+      columns: [
+        {
+          /**
+           * 字段标题为 "生产厂家"
+           */
+          title: "生产厂家",
+          /**
+           * 数据索引为 status
+           */
+          dataIndex: "factoryId",
+          /**
+           * 开启排序功能
+           */
+          sorter: true,
+        },
+        {
+          title: "分 类",
+          dataIndex: "categoryId",
+          sorter: true,
+          valueType: "select",
+          width: "sm",
+          valueEnum: categoryOptions,
+        },
+      ],
+    },
+  ];
 
   // 返回一个 ModalForm 组件
   return (
