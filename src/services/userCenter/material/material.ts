@@ -34,6 +34,7 @@ export async function arr(params: any, sort: any, filter: any) {
       params: params,
       sort: sort,
       filter: filter,
+      pageSize: 0,
     },
   });
 }

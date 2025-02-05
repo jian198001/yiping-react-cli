@@ -35,6 +35,9 @@ export default (props: any) => {
   const onOpenChange = async () => {
     // 获取物料列表数据
     const options: any = await arr?.({}, {}, {});
+
+    console.log(options?.data);
+    
     // 更新 optionsMaterialId 状态变量
     setOptionsMaterialId?.(options?.data);
 
@@ -74,8 +77,15 @@ export default (props: any) => {
       orderId: orderId,
     };
     // 调用 run 函数提交表单
-    // TODO: 调用 updateItem 函数更新物料采购明细单
+    // 调用 updateItem 函数更新物料采购明细单
+ 
     const res = await updateItem?.(values);
+
+    // 如果更新成功，调用 onOk 函数
+    if (res?.data) {
+      onOk();
+    }
+
     // 返回 true 表示提交成功
     return true;
   };
@@ -105,7 +115,7 @@ export default (props: any) => {
         },
         {
           // 物料字段
-          title: "物料",
+          title: "物 料",
           dataIndex: "materialId",
           valueType: "select",
           formItemProps: {
@@ -118,7 +128,7 @@ export default (props: any) => {
           },
           width: "m",
           hideInSearch: true,
-          options: optionsMaterialId,
+          valueEnum: optionsMaterialId,
         },
       ],
     },

@@ -173,6 +173,9 @@ export default (props: any) => {
   const request = async (params: any) => {
     const data = await pageItem?.(id, params, null, null);
 
+    console.log("request", data);
+    
+
     return data;
   };
 

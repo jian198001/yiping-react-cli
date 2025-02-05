@@ -15,5 +15,6 @@ let formItems = [
                     },
                 ],
             }, 
+            width: "m",
         },],
     },]
